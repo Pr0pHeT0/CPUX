@@ -22,7 +22,9 @@ entity mem is
 		mem_write: in std_logic;
 
 		mem_read: in std_logic;
-
+		
+		sw: in std_logic_vector(15 downto 0);
+		-- onboard switch
 		mem_addr: out std_logic_vector(17 downto 0);
 		-- mem_addr is the address bus with little endian of memory #1 on board
 		mem_data: inout std_logic_vector(15 downto 0);
