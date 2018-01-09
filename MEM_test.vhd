@@ -16,6 +16,8 @@ entity mem_read is
 		-- clk is the clock button on board(per-step clock source)
 		led: out std_logic_vector(0 to 15);
 		-- led_debug is LED x16 on board for debugging
+		sw: in std_logic_vector(15 downto 0);
+		-- onboard switch
 		mem1_en: out std_logic;
 		-- mem1_en is the enable signal of memory #1 on board
 		mem1_oe: out std_logic;
