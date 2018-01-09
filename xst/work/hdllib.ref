@@ -1,0 +1,9 @@
+EN mux1 NULL /home/qsz/CPUX/mux1.vhdl sub00/vhpl02 1515467352
+AR reg behavioral /home/qsz/CPUX/REG.vhd sub00/vhpl07 1515467369
+EN pc NULL /home/qsz/CPUX/PC.vhd sub00/vhpl04 1515467361
+EN mem_read NULL /home/qsz/CPUX/memaccess.vhd sub00/vhpl08 1515467594
+AR alu behavioral /home/qsz/CPUX/ALU.vhd sub00/vhpl01 1515467319
+AR mux1 behavioral /home/qsz/CPUX/mux1.vhdl sub00/vhpl03 1515467353
+AR pc behavioral /home/qsz/CPUX/PC.vhd sub00/vhpl05 1515467362
+EN reg NULL /home/qsz/CPUX/REG.vhd sub00/vhpl06 1515467368
+EN alu NULL /home/qsz/CPUX/ALU.vhd sub00/vhpl00 1515467318

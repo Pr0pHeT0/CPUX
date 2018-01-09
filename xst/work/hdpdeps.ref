@@ -1,0 +1,26 @@
+V3 15
+FL /home/qsz/CPUX/ALU.vhd 2018/01/09.11:08:35 P.20131013
+EN work/ALU 1515467318 FL /home/qsz/CPUX/ALU.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/ALU/Behavioral 1515467319 \
+      FL /home/qsz/CPUX/ALU.vhd EN work/ALU 1515467318
+FL /home/qsz/CPUX/memaccess.vhd 2018/01/09.11:10:13 P.20131013
+EN work/mem_read 0 FL /home/qsz/CPUX/memaccess.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/mem_read/Behavioral 0 \
+      FL /home/qsz/CPUX/memaccess.vhd EN work/mem_read 0
+FL /home/qsz/CPUX/mux1.vhdl 2018/01/09.02:38:39 P.20131013
+EN work/mux1 1515467352 FL /home/qsz/CPUX/mux1.vhdl PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/mux1/Behavioral 1515467353 \
+      FL /home/qsz/CPUX/mux1.vhdl EN work/mux1 1515467352
+FL /home/qsz/CPUX/PC.vhd 2018/01/09.01:48:30 P.20131013
+EN work/PC 1515467361 FL /home/qsz/CPUX/PC.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/pc/Behavioral 1515467362 \
+      FL /home/qsz/CPUX/PC.vhd EN work/PC 1515467361
+FL /home/qsz/CPUX/REG.vhd 2018/01/09.02:55:53 P.20131013
+EN work/REG 1515467368 FL /home/qsz/CPUX/REG.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/REG/Behavioral 1515467369 \
+      FL /home/qsz/CPUX/REG.vhd EN work/REG 1515467368

@@ -1,0 +1,48 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /home/qsz/CPUX/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to /home/qsz/CPUX/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/home/qsz/CPUX/memaccess.vhd" in Library work.
+Entity <mem_read> compiled.
+ERROR:HDLParsers:410 - "/home/qsz/CPUX/memaccess.vhd" Line 50. Variable 'address' address is at left hand side of signal assignment statement.
+ERROR:HDLParsers:164 - "/home/qsz/CPUX/memaccess.vhd" Line 61. parse error, unexpected IF, expecting THEN
+ERROR:HDLParsers:410 - "/home/qsz/CPUX/memaccess.vhd" Line 68. Variable 'status' status is at left hand side of signal assignment statement.
+ERROR:HDLParsers:410 - "/home/qsz/CPUX/memaccess.vhd" Line 71. Variable 'status' status is at left hand side of signal assignment statement.
+ERROR:HDLParsers:410 - "/home/qsz/CPUX/memaccess.vhd" Line 74. Variable 'status' status is at left hand side of signal assignment statement.
+ERROR:HDLParsers:164 - "/home/qsz/CPUX/memaccess.vhd" Line 77. parse error, unexpected ELSIF, expecting END
+ERROR:HDLParsers:410 - "/home/qsz/CPUX/memaccess.vhd" Line 81. Variable 'status' status is at left hand side of signal assignment statement.
+ERROR:HDLParsers:164 - "/home/qsz/CPUX/memaccess.vhd" Line 82. parse error, unexpected ELSIF, expecting END
+ERROR:HDLParsers:410 - "/home/qsz/CPUX/memaccess.vhd" Line 84. Variable 'status' status is at left hand side of signal assignment statement.
+ERROR:HDLParsers:164 - "/home/qsz/CPUX/memaccess.vhd" Line 86. parse error, unexpected IF, expecting PROCESS
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+
+
+Total memory usage is 481992 kilobytes
+
+Number of errors   :   10 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
