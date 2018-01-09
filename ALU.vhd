@@ -21,7 +21,7 @@ architecture Behavioral of ALU is
           when "000" =>
             res := alu_srcA + alu_srcB;
           when "001" =>
-              res := alu_srcA - alu_srcB;
+            res := alu_srcA - alu_srcB;
           when "010" =>
             res := alu_srcA and alu_srcB;
           when "011" =>
