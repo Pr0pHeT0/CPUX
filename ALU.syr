@@ -71,7 +71,7 @@ Automatic Register Balancing       : No
 
 ---- Target Options
 Add IO Buffers                     : YES
-Global Maximum Fanout              : 500
+Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 24
 Register Duplication               : YES
 Slice Packing                      : YES
@@ -109,18 +109,18 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 Compiling vhdl file "/home/qsz/CPUX/ALU.vhd" in Library work.
 Entity <alu> compiled.
-Entity <ALU> (Architecture <Behavioral>) compiled.
+Entity <alu> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <ALU> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <ALU> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <ALU> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <ALU> in library <work> (Architecture <behavioral>).
 Entity <ALU> analyzed. Unit <ALU> generated.
 
 
@@ -329,13 +329,13 @@ Delay:               12.986ns (Levels of Logic = 23)
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.58 secs
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.60 secs
  
 --> 
 
 
-Total memory usage is 527480 kilobytes
+Total memory usage is 527676 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

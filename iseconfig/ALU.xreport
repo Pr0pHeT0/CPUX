@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-01-09T11:16:34</DateModified>
+  <DateModified>2018-01-09T13:13:58</DateModified>
   <ModuleName>ALU</ModuleName>
   <SummaryTimeStamp>2018-01-09T11:08:42</SummaryTimeStamp>
   <SavedFilePath>/home/qsz/CPUX/iseconfig/ALU.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/qsz/CPUX</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/qsz/CPUX/</ImplementationReportsDirectory>
   <DateInitialized>2018-01-09T11:06:52</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

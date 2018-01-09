@@ -22,7 +22,7 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="CPUX.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
-    <file xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name=".lso"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="ALU.cmd_log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="ALU.lso"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="ALU.ngc"/>
@@ -35,6 +35,12 @@
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="ALU_summary.html"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ALU_vhdl.prj"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="ALU_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="DR.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="DR.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="DR.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="IR.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="IR.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="IR.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="PC.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="PC.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="PC.xst"/>
@@ -48,6 +54,12 @@
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="mux1.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="mux1.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="mux1.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="mux2.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="mux2.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="mux2.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="mux3.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="mux3.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="mux3.xst"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
@@ -55,6 +67,7 @@
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1515467222" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1515467222">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1515467222" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8221284822752684281" xil_pn:start_ts="1515467222">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -80,7 +93,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1515467322" xil_pn:in_ck="3694216964770989525" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="-1495280223908843604" xil_pn:start_ts="1515467315">
+    <transform xil_pn:end_ts="1515474875" xil_pn:in_ck="6564407739577908948" xil_pn:name="TRANEXT_xstsynthesize_spartan3e" xil_pn:prop_ck="-7159908451433907528" xil_pn:start_ts="1515474868">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -89,6 +102,7 @@
       <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputChanged"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
   </transforms>

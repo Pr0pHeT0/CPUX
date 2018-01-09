@@ -16,7 +16,7 @@ architecture Behavioral of IR is
     process(clk)
           begin           
               if(IR_write = '1') then
-                pc_out <= pc_in;
+                IR_out <= IR_in;
               end if;            
         end process;
     

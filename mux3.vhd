@@ -17,9 +17,9 @@ entity mux3 is
       mux_op: in std_logic_vector(2 downto 0);
       outsrc: out std_logic_vector(15 downto 0)
     );
-  end mux3;
+end mux3;
 
-  architecture Behavioral of mux3 is
+architecture Behavioral of mux3 is
 
     begin
         process(input1, input2, input3, input4, input5, input6, input7, input8, mux_op)
@@ -35,5 +35,5 @@ entity mux3 is
                 when "111" => outsrc <= input8;
                 when others => outsrc <= "ZZZZZZZZZZZZZZZZ";
             end case;
-    
+			end process;
     end Behavioral;

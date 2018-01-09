@@ -13,9 +13,9 @@ entity mux2 is
       mux_op: in std_logic_vector(1 downto 0);
       outsrc: out std_logic_vector(15 downto 0)
     );
-  end mux2;
+end mux2;
 
-  architecture Behavioral of mux2 is
+architecture Behavioral of mux2 is
 
     begin
         process(input1, input2, input3, input4,mux_op)
@@ -27,5 +27,5 @@ entity mux2 is
                 when "11" => outsrc <= input4;
                 when others => outsrc <= "ZZZZZZZZZZZZZZZZ";
             end case;
-    
+			end process;
     end Behavioral;
