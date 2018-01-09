@@ -1,6 +1,3 @@
--- dgideas@outlook.com
--- Wanlin Wang @ Beijing Institute of Petrochemical Technology
--- 2018.1
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
