@@ -101,3 +101,16 @@ component REG
         reg_data_2: out std_logic_vector(15 downto 0)
     );
 end component;
+
+
+component muxalusrca
+    Port 
+    (   
+        pcout: in std_logic_vector(15 downto 0);
+        A: in std_logic_vector(15 downto 0);
+        mux_op: in std_logic;
+        outsrc: out std_logic_vector(15 downto 0)
+    );
+end component;
+
+
