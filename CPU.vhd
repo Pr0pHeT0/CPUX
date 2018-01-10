@@ -114,3 +114,47 @@ component muxalusrca
 end component;
 
 
+component muxalusrcb
+    Port 
+    (   
+        B: in std_logic_vector(15 downto 0);
+        --con1: in std_logic_vector(15 downto 0):="0000000000000001";
+        low: in std_logic_vector(15 downto 0);
+        --con0: in std_logic_vector(15 downto 0):="0000000000000000";
+        mux_op: in std_logic_vector(1 downto 0);
+        outsrc: out std_logic_vector(15 downto 0)
+    );
+end component;
+
+component muxmemtoreg
+    Port 
+    (   
+        aluout: in std_logic_vector(15 downto 0);
+        mdr: in std_logic_vector(15 downto 0);
+        mux_op: in std_logic_vector(1 downto 0);
+        outsrc: out std_logic_vector(15 downto 0)
+    );
+end component;
+
+
+component muxpcsource
+    Port 
+    (   
+        alu: in std_logic_vector(15 downto 0);
+        aluout: in std_logic_vector(15 downto 0);
+        mux_op: in std_logic;
+        outsrc: out std_logic_vector(15 downto 0)
+    );
+end component;
+
+
+component muxregdst
+    Port 
+    (   
+        rx: in std_logic_vector(15 downto 0);
+        ry: in std_logic_vector(15 downto 0);
+        rz: in std_logic_vector(15 downto 0);
+        mux_op: in std_logic_vector(1 downto 0);
+        outsrc: out std_logic_vector(15 downto 0)
+    );
+end component;

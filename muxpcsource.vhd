@@ -4,16 +4,16 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 
-entity muxsource is
+entity muxpcsource is
     port(
       alu: in std_logic_vector(15 downto 0);
       aluout: in std_logic_vector(15 downto 0);
       mux_op: in std_logic;
       outsrc: out std_logic_vector(15 downto 0)
     );
-  end muxsource;
+  end muxpcsource;
 
-  architecture Behavioral of muxsource is
+  architecture Behavioral of muxpcsource is
 
     begin
         process(alu, aluout, mux_op)
