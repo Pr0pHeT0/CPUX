@@ -37,58 +37,82 @@ entity mem is
 	);
 end mem;
 
-architecture Behavioral of mem is
-	--signal status: std_logic_vector(3 downto 0) := "0000";
-	-- signal times: std_logic_vector(3 downto 0) := "0000";
-	--signal echo: std_logic_vector(15 downto 0) := "1111111100000000"
-	-- signal process_clock50_scan_clk_button_pervious: std_logic := '1';
-begin
+entity test is
+    Port ( clk : in  STD_LOGIC;
+			  rst : in  STD_LOGIC;
+			  clk0 : in STD_LOGIC;
+           ram_data1 : inout  STD_LOGIC_VECTOR (15 downto 0);
+           ram_data2 : inout  STD_LOGIC_VECTOR (15 downto 0);
+           ram1_en : out  STD_LOGIC;
+           ram1_oe : out  STD_LOGIC;
+           ram1_rw : out  STD_LOGIC;
+           ram2_en : out  STD_LOGIC;
+           ram2_oe : out  STD_LOGIC;
+           ram2_rw : out  STD_LOGIC;
+           light : out  STD_LOGIC_VECTOR (15 downto 0);
+			  showCtrl : in std_logic;
+			  bZero_Ctrl : in std_logic;
+           ram_addr1 : out  STD_LOGIC_VECTOR (15 downto 0);
+           ram_addr2 : out  STD_LOGIC_VECTOR (17 downto 0);
+           seg_l : out  STD_LOGIC_VECTOR (6 downto 0);
+           seg_r : out  STD_LOGIC_VECTOR (6 downto 0);
+			IR_in: in STD_LOGIC_VECTOR(15 downto 0);
+			IR_out: out STD_LOGIC_VECTOR(15 downto 0);
+			IRWrite : in std_logic;
+			  SW:in STD_LOGIC_VECTOR(15 downto 0);
+			inputA : in  STD_LOGIC_VECTOR (15 downto 0);
+		--	inputB : in  STD_LOGIC_VECTOR (15 downto 0);
+			ALUOp : in  STD_LOGIC_VECTOR (2 downto 0);
+			Memory_in: in STD_LOGIC_VECTOR(15 downto 0);
+			Memory_in_data: in STD_LOGIC_VECTOR(15 downto 0);
+			Memory_out: out STD_LOGIC_VECTOR(15 downto 0);
+			MemRead : in std_logic;
+			MemWrite : in std_logic;
+			result : out STD_LOGIC_VECTOR (15 downto 0)
+);
+end test;
 
-process(clk)
-	variable address: std_logic_vector(17 downto 0);
-	variable data: std_logic_vector(15 downto 0);
-	variable status: std_logic_vector(1 downto 0) := "00";
+architecture Behavioral of test is
+signal cnt:std_logic_vector(4 downto 0):="00000";
+signal ct :STD_LOGIC_VECTOR (15 downto 0);
+signal ram_a :STD_LOGIC_VECTOR (15 downto 0);
 begin
-	address <= "00" & mem_addr_rw;
-	
-	if (rising_edge(clk)) then		
-			-- process_clock50_scan_clk_button_pervious <= clk;
-			-- if (status = "0101" and process_clock50_scan_clk_button_pervious /= clk and clk = '0') then
-				-- times <= times + '1';
-				--status <= "0000"; -- reinitialize the status
-			--end if;
-			-- address := "000000000000000000" + times;
-			-- data := "0000000000000000" + times;
-			if (mem_read='0' and mem_write='1') then
-				if (status = "00") then -- Write memory, step #1
-					-- led <= "1111111111111111"; -- Reset led, to make sure the data really comes from memory
-					mem_en <= '0';
-					mem_rw <= '1';
-					mem_oe <= '1';
-					mem_addr <= address;
-					mem_data <= data;
-					status <= "01";
-				elsif (status = "01") then -- Write memory, step #2
-					mem_rw <= '0';
-					status <= "10";
-				elsif (status = "10") then -- Write memory, step #3
-					mem_rw <= '1';
-					status <= "00";
-					mem_data <= "ZZZZZZZZZZZZZZZZ";
+process(Memory_in_data,MemRead,MemWrite)
+begin
+ct<="0000000000000001";
+	if(clk'event and clk='1') then
+		if Memread='0' then
+			cnt<=cnt+'1';
+				if(cnt="00001")then
+					ram_data1<="ZZZZZZZZZZZZZZZZ";
+				elsif(cnt="00010")then                           -----------------??ALUout???
+					ram1_oe<='0';
+				elsif(cnt="00011")then
+					ram_a<="0000000000000001";
+					light<=ram_data1;
+	--				Memory_out<=ram_data1;
+					cnt<="00000";
+				end if;			
+		end if;
+		if MemWrite='0' then
+				cnt<=cnt+'1';			
+				if(cnt="00001")then
+					ram_a<=ct;
+				elsif(cnt="00010")then
+					ram_data1<=Memory_in_data; ---------------R ?ALU?��?????????????????SW???
+				elsif(cnt="00011")then     
+					ram1_oe<='1';
+					ram1_rw<='0'; 
+					ram1_en<='0';
+				elsif(cnt="00100")then     
+					ram1_oe<='1';
+					ram1_rw<='1'; 
+					ram1_en<='0'; 
+					cnt<="00000";
 				end if;
-			elsif(mem_read='1' and mem_write='0') then 
-				if (status = "00") then -- Read memory, step #1
-					mem_oe <= '0';
-					mem_addr <= address;
-					status <= "01";
-				elsif (status = "01") then -- Read memory, step #2
-					mem_read_data <= mem_data;
-					status <= "00";
-					mem_oe <= '1';
-				end if;
-			end if;	
-		
-	end if;
+		end if;
+	end  if;
+ram_addr1(15 downto 0)<=ram_a;
 end process;
-
 end Behavioral;
+
