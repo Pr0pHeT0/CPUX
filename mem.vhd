@@ -8,7 +8,7 @@ entity mem is
 	port
 	(
 		clk: in std_logic;
-		-- clock50 is 50MHz crystal on board
+		-- clock50 is 50MHz crystal on board sb
 		--clk: in std_logic;
 		-- clk is the clock button on board(per-step clock source)
 		--led: out std_logic_vector(0 to 15);
