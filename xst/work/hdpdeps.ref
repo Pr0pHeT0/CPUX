@@ -1,4 +1,4 @@
-V3 27
+V3 28
 FL /home/qsz/CPUX/ALU.vhd 2018/01/09.12:42:58 P.20131013
 EN work/ALU 1515474872 FL /home/qsz/CPUX/ALU.vhd PB ieee/std_logic_1164 1381692176 \
       PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
@@ -19,11 +19,12 @@ EN work/mem_read 0 FL /home/qsz/CPUX/memaccess.vhd PB ieee/std_logic_1164 138169
       PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
 AR work/mem_read/Behavioral 0 \
       FL /home/qsz/CPUX/memaccess.vhd EN work/mem_read 0
-FL /home/qsz/CPUX/mux1.vhdl 2018/01/09.02:38:39 P.20131013
-EN work/mux1 1515467352 FL /home/qsz/CPUX/mux1.vhdl PB ieee/std_logic_1164 1381692176 \
+FL /home/qsz/CPUX/mux1.vhd 2018/01/09.13:33:07 P.20131013
+EN work/mux1 1515480862 FL /home/qsz/CPUX/mux1.vhd PB ieee/std_logic_1164 1381692176 \
       PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
-AR work/mux1/Behavioral 1515467353 \
-      FL /home/qsz/CPUX/mux1.vhdl EN work/mux1 1515467352
+AR work/mux1/Behavioral 1515480863 \
+      FL /home/qsz/CPUX/mux1.vhd EN work/mux1 1515480862
+FL /home/qsz/CPUX/mux1.vhdl 2018/01/09.02:38:39 P.20131013
 FL /home/qsz/CPUX/mux2.vhd 2018/01/09.13:17:11 P.20131013
 EN work/mux2 1515475037 FL /home/qsz/CPUX/mux2.vhd PB ieee/std_logic_1164 1381692176 \
       PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179

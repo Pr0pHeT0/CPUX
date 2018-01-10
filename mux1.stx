@@ -20,20 +20,22 @@ WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Onl
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "/home/qsz/CPUX/mux1.vhdl" in Library work.
+WARNING:HDLParsers:3607 - Unit work/mux1 is now defined in a different file.  It was defined in "/home/qsz/CPUX/mux1.vhdl", and is now defined in "/home/qsz/CPUX/mux1.vhd".
+WARNING:HDLParsers:3607 - Unit work/mux1/Behavioral is now defined in a different file.  It was defined in "/home/qsz/CPUX/mux1.vhdl", and is now defined in "/home/qsz/CPUX/mux1.vhd".
+Compiling vhdl file "/home/qsz/CPUX/mux1.vhd" in Library work.
 Entity <mux1> compiled.
-Entity <mux1> (Architecture <Behavioral>) compiled.
+Entity <mux1> (Architecture <behavioral>) compiled.
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> 
 
 
-Total memory usage is 481844 kilobytes
+Total memory usage is 481996 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    1 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
