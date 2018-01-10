@@ -22,7 +22,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity Controler_seven is
+entity Controler is
 	Port( rst:in STD_LOGIC;
 		  clk:in STD_LOGIC;
 		  clk0:in STD_LOGIC;
@@ -30,9 +30,9 @@ entity Controler_seven is
 		  light:out STD_LOGIC_VECTOR(15 downto 0);
 		  showCtrl:in STD_LOGIC;
 		  bZero_ctrl:in  STD_LOGIC);
-end Controler_seven;
+end Controler;
 
-architecture Behavioral of Controler_seven is
+architecture Behavioral of Controler is
 
 signal bzero:std_logic;
 type shower_state is(PC,ALU,Mem,Reg);
