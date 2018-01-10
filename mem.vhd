@@ -33,8 +33,8 @@ process(mem_write_data,mem_read,mem_write)
 	variable address :STD_LOGIC_VECTOR (15 downto 0);
 begin	
 	data := mem_write_data;
-	-- address(17 downto 0) := "00" & mem_addr_rw(15 downto 0);
-	address(17 downto 0) :="000000000000000101";
+	address(17 downto 0) := "00" & mem_addr_rw(15 downto 0);
+	-- address(17 downto 0) :="000000000000000101";
 	if(clk'event and clk='1') then
 		if mem_read='0' then
 			status<=status+'1';

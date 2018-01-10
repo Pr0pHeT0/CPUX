@@ -23,7 +23,31 @@ component ALU
     );
 end component;
 
-component ALU
+component CONTROLER
+    Port 
+    (   
+        rst:in STD_LOGIC;
+		clk:in STD_LOGIC;
+		clk0:in STD_LOGIC;
+		instructions:in STD_LOGIC_VECTOR(15 downto 0);
+		light:out STD_LOGIC_VECTOR(15 downto 0);
+		showCtrl:in STD_LOGIC;
+		bZero_ctrl:in  STD_LOGIC
+    );
+end component;
+
+component PC
+    Port 
+    (   
+        clk : in  STD_LOGIC;
+        pc_in : in std_logic_vector(15 downto 0);
+        pc_write : in std_logic;
+        pc_out : out std_logic_vector(15 downto 0)
+    );
+end component;
+
+
+component mem
     Port 
     (   
         clk : in  STD_LOGIC;
