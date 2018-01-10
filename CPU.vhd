@@ -158,3 +158,24 @@ component muxregdst
         outsrc: out std_logic_vector(15 downto 0)
     );
 end component;
+
+signal bzero:std_logic;
+type shower_state is(PC,ALU,Mem,Reg);
+signal shower : shower_state ;
+type controcer_state is(instruction_fetch,decode,execute,mem_control,write_reg);
+signal state : controcer_state;
+signal PCWrite:std_logic;
+signal PCWriteCond:std_logic;
+signal PCSource:std_logic;
+signal ALUop:std_logic_vector(2 downto 0);
+signal ALUSrcA:std_logic;
+signal ALUSrcB:std_logic_vector(1 downto 0);
+signal MemRead:std_logic;
+signal MemWrite:std_logic;
+signal IRWrite:std_logic;
+signal MemtoReg:std_logic_vector(1 downto 0);
+signal RegWrite:std_logic_vector(2 downto 0);
+signal RegDst:std_logic_vector(1 downto 0);
+signal IorD:std_logic;
+signal tmpb_zero:std_logic;
+signal tmp_light:std_logic_vector(15 downto 0);
