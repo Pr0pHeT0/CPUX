@@ -1,0 +1,39 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "alu_srcA[15]" LOC = J6;
+NET "alu_srcA[14]" LOC = J7;
+NET "alu_srcA[13]" LOC = K2;
+NET "alu_srcA[12]" LOC = K7;
+NET "alu_srcA[11]" LOC = M1;
+NET "alu_srcA[10]" LOC = N1;
+NET "alu_srcA[9]" LOC = N2;
+NET "alu_srcA[8]" LOC = R1;
+NET "alu_srcA[7]" LOC = R4;
+NET "alu_srcA[6]" LOC = U1;
+NET "alu_srcA[5]" LOC = V2;
+NET "alu_srcA[4]" LOC = V3;
+NET "alu_srcA[3]" LOC = V4;
+NET "alu_srcA[2]" LOC = U8;
+NET "alu_srcA[1]" LOC = R7;
+NET "alu_srcA[0]" LOC = T7;
+NET "alu_out[15]" LOC = D10;
+NET "alu_out[14]" LOC = E10;
+NET "alu_out[13]" LOC = A11;
+NET "alu_out[12]" LOC = B11;
+NET "alu_out[11]" LOC = C11;
+NET "alu_out[10]" LOC = D11;
+NET "alu_out[9]" LOC = E11;
+NET "alu_out[8]" LOC = F11;
+NET "alu_out[7]" LOC = A12;
+NET "alu_out[6]" LOC = E12;
+NET "alu_out[5]" LOC = F12;
+NET "alu_out[4]" LOC = A13;
+NET "alu_out[3]" LOC = B13;
+NET "alu_out[2]" LOC = D13;
+NET "alu_out[1]" LOC = E13;
+NET "alu_out[0]" LOC = A14;
+NET "alu_op[2]" LOC = V16;
+NET "alu_op[1]" LOC = V14;
+NET "alu_op[0]" LOC = U14;
+

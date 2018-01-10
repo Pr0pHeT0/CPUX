@@ -21,6 +21,8 @@ entity mem is
 		-- mem_rw is the read/write controller signal of memory #1 on board
 		mem_write: in std_logic;
 
+		IR_Write : in std_logic;
+
 		mem_read: in std_logic;
 	
 		mem_addr: out std_logic_vector(17 downto 0);
@@ -47,7 +49,7 @@ process(clk)
 	variable data: std_logic_vector(15 downto 0);
 	variable status: std_logic_vector(1 downto 0) := "00";
 begin
-	address (15 downto 0)<= mem_addr_rw;
+	address <= "00" & mem_addr_rw;
 	
 	if (rising_edge(clk)) then		
 			-- process_clock50_scan_clk_button_pervious <= clk;
@@ -57,7 +59,7 @@ begin
 			--end if;
 			-- address := "000000000000000000" + times;
 			-- data := "0000000000000000" + times;
-			if (mem_read='0' and mem_write='1')
+			if (mem_read='0' and mem_write='1') then
 				if (status = "00") then -- Write memory, step #1
 					-- led <= "1111111111111111"; -- Reset led, to make sure the data really comes from memory
 					mem_en <= '0';
@@ -74,7 +76,7 @@ begin
 					status <= "00";
 					mem_data <= "ZZZZZZZZZZZZZZZZ";
 				end if;
-			elsif(mem_read='1' and mem_write='0')
+			elsif(mem_read='1' and mem_write='0') then 
 				if (status = "00") then -- Read memory, step #1
 					mem_oe <= '0';
 					mem_addr <= address;
