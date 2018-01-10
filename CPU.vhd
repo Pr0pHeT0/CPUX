@@ -75,3 +75,14 @@ component IR
         IR_out : out std_logic_vector(15 downto 0)
     );
 end component;
+
+
+component DR
+    Port 
+    (   
+        clk : in  STD_LOGIC;
+        DR_in : in std_logic_vector(15 downto 0);
+        DR_write : in std_logic;           
+        DR_out : out std_logic_vector(15 downto 0)
+    );
+end component;
