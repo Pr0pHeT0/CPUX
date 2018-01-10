@@ -27,11 +27,15 @@ architecture Behavioral of ALU is
           when "011" =>
             res := alu_srcA or alu_srcB;
           when "100" =>
-            res := alu_srcA xor alu_srcB;
+            if(alu_srcA<alu_srcB) then 
+              res := "0000000000000001";
+              elsif(alu_srcA>=alu_srcB) then 
+                res :="0000000000000000";
+            end if;          
           when "101" =>
             res := not(alu_srcA);
           when "110" =>           
-            res := to_stdlogicvector(to_bitvector(alu_srcA) sll conv_integer(alu_srcB)); --sllv luojizuoyi
+            res : = to_stdlogicvector(to_bitvector(alu_srcA) sll conv_integer(alu_srcB)); --sllv luojizuoyi
           when "111" =>            
             res := to_stdlogicvector(to_bitvector(alu_srcA) srl conv_integer(alu_srcB)); -- srlv luojiyouyi  
           when others =>
