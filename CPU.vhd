@@ -50,10 +50,28 @@ end component;
 component mem
     Port 
     (   
+		clk : in  STD_LOGIC;		
+		mem_en : out  STD_LOGIC;
+		mem_oe : out  STD_LOGIC;
+		mem_rw : out  STD_LOGIC;
+		mem_addr : out  STD_LOGIC_VECTOR (17 downto 0);
+		mem_data : inout  STD_LOGIC_VECTOR (15 downto 0);
+		mem_write_data: in std_logic_vector(15 downto 0);
+		mem_read_data: out std_logic_vector(15 downto 0);
+		mem_addr_rw: in std_logic_vector(15 downto 0);
+		IR_Write : in std_logic;		
+		mem_read : in std_logic;
+		mem_write : in std_logic
+    );
+end component;
+
+
+component IR
+    Port 
+    (   
         clk : in  STD_LOGIC;
-        alu_srcA : in std_logic_vector(15 downto 0);
-        alu_srcB : in std_logic_vector(15 downto 0);
-        alu_out : out std_logic_vector(15 downto 0);
-        alu_op : in std_logic_vector(2 downto 0)
+        IR_in : in std_logic_vector(15 downto 0);
+        IR_write : in std_logic;           
+        IR_out : out std_logic_vector(15 downto 0)
     );
 end component;
