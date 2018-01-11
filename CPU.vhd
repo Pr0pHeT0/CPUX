@@ -114,7 +114,7 @@ end component;
 component muxalusrca
     Port 
     (   
-        pcout: in std_logic_vector(15 downto 0);
+        pc_out_a: in std_logic_vector(15 downto 0);
         A: in std_logic_vector(15 downto 0);
         mux_op_a: in std_logic;
         outsrc_a: out std_logic_vector(15 downto 0)
@@ -148,7 +148,7 @@ end component;
 component muxpcsource
     Port 
     (   
-        alu: in std_logic_vector(15 downto 0);
+        pc_out: in std_logic_vector(15 downto 0);
         aluout: in std_logic_vector(15 downto 0);
         mux_op_p: in std_logic;
         outsrc_p: out std_logic_vector(15 downto 0)
@@ -170,7 +170,7 @@ end component;
 component mux_IorD
     Port 
     (   
-			pcout: in std_logic_vector(15 downto 0);
+			pc_out_a: in std_logic_vector(15 downto 0);
 			aluout: in std_logic_vector(15 downto 0);
 			mux_op_i: in std_logic;
 			outsrc_i: out std_logic_vector(15 downto 0)
@@ -190,14 +190,14 @@ end component;
     signal showCtrll : STD_LOGIC;
     signal bZero_ctrll : STD_LOGIC;
     --signal clkl : STD_LOGIC;
-    signal pc_inl : std_logic_vector(15 downto 0);
+    --signal pc_inl : std_logic_vector(15 downto 0);
     signal pc_writel : std_logic;
     signal pc_outl : std_logic_vector(15 downto 0);
     --signal clkl : STD_LOGIC;		
     signal mem_enl : STD_LOGIC;
     signal mem_oel : STD_LOGIC;
     signal mem_rwl : STD_LOGIC;
-    signal mem_addrl : STD_LOGIC_VECTOR (17 downto 0);
+    --signal mem_addrl : STD_LOGIC_VECTOR (17 downto 0);
     signal mem_datal : STD_LOGIC_VECTOR (15 downto 0);
     signal mem_write_datal : std_logic_vector(15 downto 0);
     signal mem_read_datal : std_logic_vector(15 downto 0);
@@ -221,7 +221,7 @@ end component;
     signal write_oel : std_logic := '0';
     signal reg_data_1l : std_logic_vector(15 downto 0);
     signal reg_data_2l : std_logic_vector(15 downto 0);
-    --signal pcoutl : std_logic_vector(15 downto 0);
+    --signal pc_outl : std_logic_vector(15 downto 0);
     signal Al : std_logic_vector(15 downto 0);
     signal mux_op_al : std_logic;
     signal outsrc_al : std_logic_vector(15 downto 0);
@@ -244,7 +244,7 @@ end component;
     signal rzl : std_logic_vector(15 downto 0);
     signal mux_op_rl : std_logic_vector(1 downto 0);
     signal outsrc_rl : std_logic_vector(15 downto 0);
-	 --signal pcoutl : std_logic_vector(15 downto 0);
+	 --signal pc_outl : std_logic_vector(15 downto 0);
 	 --signal aluoutl : std_logic_vector(15 downto 0);
 	 signal mux_op_il : std_logic;
 	 signal outsrc_il : std_logic_vector(15 downto 0);
@@ -253,7 +253,7 @@ begin
 
 module_PC : PC port map(
     clk => clkl,
-    pc_in => pc_inl,
+    pc_in => outsrc_pl,
     pc_write => pc_writel,
     pc_out => pc_outl
 );
@@ -276,14 +276,14 @@ module_CONTROLER : CONTROLER port map(
     bZero_ctrl => bZero_ctrll
 );
 module_muxalusrca : muxalusrca  port map(
-    pcout=>pc_outl,
+    pc_out=>pc_outl,
     A=>Al,
     mux_op_a=>mux_op_al,
     outsrc_a=>outsrc_al
 );
 
 module_mux_IorD : mux_IorD  port map(
-    pcout=>pc_outl,
+    pc_out_a=>pc_outl,
     aluout=>aluoutl,
     mux_op_i=>mux_op_il,
     outsrc_i=>outsrc_il
@@ -304,7 +304,7 @@ module_muxmemtoreg : muxmemtoreg  port map(
 );
 
 module_muxpcsource : muxpcsource  port map(
-    alu=>alul,
+    pc_out=>alul,
     aluout=>aluoutl,
     mux_op_p=>mux_op_pl,
     outsrc_p=>outsrc_pl
@@ -331,14 +331,14 @@ module_REG : REG  port map(
 
 module_IR : IR  port map(
     clk=>clkl,
-    IR_in=>IR_inl,
+    IR_in=>mem_read_datal,
     IR_write=>IR_writel,
     IR_out=>IR_outl
 );
 
 module_DR : DR  port map(
     clk=>clkl,
-    DR_in=>DR_inl,
+    DR_in=>mem_read_datal,
     DR_write=>DR_writel,
     DR_out=>DR_outl
 );
@@ -352,7 +352,7 @@ module_mem : mem port map(
     mem_data => mem_datal,
     mem_write_data => mem_write_datal,
     mem_read_data => mem_read_datal,
-    mem_addr_rw => mem_addr_rwl,
+    mem_addr_rw => outsrc_il,
     IR_Write => IR_Writel,
     mem_read => mem_readl,
     mem_write => mem_writel
