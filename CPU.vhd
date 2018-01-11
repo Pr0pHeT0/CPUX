@@ -18,6 +18,74 @@ entity CPU is
 end CPU;
 
 architecture Behavioral of CPU is
+    signal clkl : in  STD_LOGIC;
+    signal alu_srcAl : in std_logic_vector(15 downto 0);
+    signal alu_srcBl : in std_logic_vector(15 downto 0);
+    signal alu_outl : out std_logic_vector(15 downto 0);
+    signal alu_opl : in std_logic_vector(2 downto 0);
+    signal rstl:in STD_LOGIC;
+    signal clkl:in STD_LOGIC;
+    signal clk0l:in STD_LOGIC;
+    signal instructionsl:in STD_LOGIC_VECTOR(15 downto 0);
+    signal lightl:out STD_LOGIC_VECTOR(15 downto 0);
+    signal showCtrll:in STD_LOGIC;
+    signal bZero_ctrll:in  STD_LOGIC;
+    signal clkl : in  STD_LOGIC;
+    signal pc_inl : in std_logic_vector(15 downto 0);
+    signal pc_writel : in std_logic;
+    signal pc_outl : out std_logic_vector(15 downto 0);
+    signal clkl : in  STD_LOGIC;		
+    signal mem_enl : out  STD_LOGIC;
+    signal mem_oel : out  STD_LOGIC;
+    signal mem_rwl : out  STD_LOGIC;
+    signal mem_addrl : out  STD_LOGIC_VECTOR (17 downto 0);
+    signal mem_datal : inout  STD_LOGIC_VECTOR (15 downto 0);
+    signal mem_write_datal: in std_logic_vector(15 downto 0);
+    signal mem_read_datal: out std_logic_vector(15 downto 0);
+    signal mem_addr_rwl: in std_logic_vector(15 downto 0);
+    signal IR_Writel : in std_logic;		
+    signal mem_readl : in std_logic;
+    signal mem_writel : in std_logic;
+    signal clkl : in  STD_LOGIC;
+    signal IR_inl : in std_logic_vector(15 downto 0);
+    signal IR_writel : in std_logic;           
+    signal IR_outl : out std_logic_vector(15 downto 0);
+    signal clkl : in  STD_LOGIC;
+    signal DR_inl : in std_logic_vector(15 downto 0);
+    signal DR_writel : in std_logic;           
+    signal DR_outl : out std_logic_vector(15 downto 0)
+    signal clkl: in std_logic;
+    signal reg_num_1l: in std_logic_vector(3 downto 0);
+    signal reg_num_2l: in std_logic_vector(3 downto 0);
+    signal reg_write_numl: in std_logic_vector(3 downto 0) := "0000";
+    signal reg_write_datal: in std_logic_vector(15 downto 0);
+    signal write_oel: in std_logic := '0';
+    signal reg_data_1l: out std_logic_vector(15 downto 0);
+    signal reg_data_2l: out std_logic_vector(15 downto 0)
+    signal pcoutl: in std_logic_vector(15 downto 0);
+    signal Al: in std_logic_vector(15 downto 0);
+    signal mux_opl: in std_logic;
+    signal outsrcl: out std_logic_vector(15 downto 0);
+    signal Bl: in std_logic_vector(15 downto 0);
+    --con1: in std_logic_vector(15 downto 0):="0000000000000001";
+    signal lowl: in std_logic_vector(15 downto 0);
+    --con0: in std_logic_vector(15 downto 0):="0000000000000000";
+    signal mux_opl: in std_logic_vector(1 downto 0);
+    signal outsrcl: out std_logic_vector(15 downto 0)
+    signal aluoutl: in std_logic_vector(15 downto 0);
+    signal mdrl: in std_logic_vector(15 downto 0);
+    signal mux_opl: in std_logic_vector(1 downto 0);
+    signal outsrcl: out std_logic_vector(15 downto 0);
+    signal alul: in std_logic_vector(15 downto 0);
+    signal aluoutl: in std_logic_vector(15 downto 0);
+    signal mux_opl: in std_logic;
+    signal outsrcl: out std_logic_vector(15 downto 0)
+    signal rxl: in std_logic_vector(15 downto 0);
+    signal ryl: in std_logic_vector(15 downto 0);
+    signal rzl: in std_logic_vector(15 downto 0);
+    signal mux_opl: in std_logic_vector(1 downto 0);
+    signal outsrcl: out std_logic_vector(15 downto 0)
+
 
 component ALU
     Port 
