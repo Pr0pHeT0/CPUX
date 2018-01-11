@@ -6,7 +6,14 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity CPU is 
     port
     (
-        clk : STD_LOGIC
+        clk : STD_LOGIC;
+        ram_oe : STD_LOGIC;
+        ram_rw : STD_LOGIC;
+        ram_en : STD_LOGIC;        
+        ram_data : STD_LOGIC_VECTOR(15 downto 0);
+        ram_addr : STD_LOGIC_VECTOR(17 downto 0);
+        --sw : STD_LOGIC_VECTOR(15 downto 0);
+        --led : STD_LOGIC_VECTOR(15 downto 0);     
     );
 end CPU;
 
@@ -159,37 +166,111 @@ component muxregdst
     );
 end component;
 
-signal bzero:std_logic;
-type shower_state is(PC,ALU,Mem,Reg);
-signal shower : shower_state ;
-type controcer_state is(instruction_fetch,decode,execute,mem_control,write_reg);
-signal state : controcer_state;
-signal PCWrite:std_logic;
-signal PCWriteCond:std_logic;
-signal PCSource:std_logic;
-signal ALUop:std_logic_vector(2 downto 0);
-signal ALUSrcA:std_logic;
-signal ALUSrcB:std_logic_vector(1 downto 0);
-signal MemRead:std_logic;
-signal MemWrite:std_logic;
-signal IRWrite:std_logic;
-signal MemtoReg:std_logic_vector(1 downto 0);
-signal RegWrite:std_logic_vector(2 downto 0);
-signal RegDst:std_logic_vector(1 downto 0);
-signal IorD:std_logic;
-signal tmpb_zero:std_logic;
-signal tmp_light:std_logic_vector(15 downto 0);
-signal r0: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r1: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r2: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r3: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r4: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r5: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r6: std_logic_vector(15 downto 0) := "0000000000000000";
-signal r7: std_logic_vector(15 downto 0) := "0000000000000000";
-signal RA: std_logic_vector(15 downto 0) := "0000000000000000";
-signal T: std_logic_vector(15 downto 0) := "0000000000000000";
-signal SP: std_logic_vector(15 downto 0) := "0000000000000000";
-signal IH: std_logic_vector(15 downto 0) := "0000000000000000";
-signal con1: in std_logic_vector(15 downto 0):="0000000000000001";
-signal con0: in std_logic_vector(15 downto 0):="0000000000000000";
+
+
+signal clkl 
+
+
+
+begin
+
+module_PC : PC port map(
+    clk => clkl;
+    pc_in => pc_inl;
+    pc_write => pc_writel;
+    pc_out => pc_outl
+);
+
+module_ALU : ALU port map(
+    clk => clkl;
+    alu_srcA => alu_srcAl;
+    alu_srcB => alu_srcBl;
+    alu_out => alu_outl;
+    alu_op => alu_opl
+);
+
+module_CONTROLER : CONTROLER port map(
+    rst => rstl;
+    clk => clkl;
+    clk0 => clk0l;
+    instructions => instructionsl;
+    light => lightl;
+    showCtrl => showCtrll;
+    bZero_ctrl => bZero_ctrl
+);
+module_muxalusrca : muxalusrca  port map(
+    pcout=>pcoutl;
+    A=>Al;
+    mux_op_a=>mux_op_al;
+    outsrc_a=>outsrc_al
+);
+
+module_muxalusrca : muxalusrca  port map(
+    B=>Bl;
+    low=>lowl;
+    mux_op_b=>mux_op_bl;
+    outsrc_b=>outsrc_bl
+);
+
+module_muxmemtoreg : muxmemtoreg  port map(
+    aluout=>aluoutl;
+    mdr=>mdrl;
+    mux_op_m=>mux_op_ml;
+    outsrc_m=>outsrc_ml
+);
+
+module_muxpcsource : muxpcsource  port map(
+    alu=>alul;
+    aluout=>aluoutl;
+    mux_op_p=>mux_op_pl;
+    outsrc_p=>outsrc_pl
+);
+
+module_muxregdst : muxregdst  port map(
+    rx=>rxl;
+    ry=>ryl;
+    rz=>rzl;
+    mux_op_r=>mux_op_rl;
+    outsrc_r=>outsrc_rl
+);
+
+module_REG : REG  port map(
+    clk=>clkl;
+    reg_num_1=>reg_num_1l;
+    reg_num_2=>reg_num_2l;
+    reg_write_num=>reg_write_numl;
+    reg_write_data=>reg_write_datal;
+    write_oe=>write_oel;
+    reg_data_1=>reg_data_1l;
+    reg_data_2=>reg_data_2l
+);
+
+module_IR : IR  port map(
+    clk=>clkl;
+    IR_in=>IR_inl;
+    IR_write=>IR_writel;
+    IR_out=>IR_outl
+);
+
+module_DR : DR  port map(
+    clk=>clkl;
+    DR_in=>DR_inl;
+    DR_write=>DR_writel;
+    DR_out=>DR_outl
+);
+
+module_mem : mem port map(
+    clk => clkl;
+    mem_en => mem_enl;
+    mem_oe => mem_oel;
+    mem_rw => mem_rwl;
+    mem_addr => mem_addrl;
+    mem_data => mem_datal;
+    mem_write_data => mem_write_datal;
+    mem_read_data => mem_read_datal;
+    mem_addr_rw => mem_addr_rwl;
+    IR_Write => IR_Writel;
+    mem_read => mem_readl;
+    mem_write => mem_writel
+)
+
