@@ -340,5 +340,6 @@ module_mem : mem port map(
     IR_Write => IR_Writel;
     mem_read => mem_readl;
     mem_write => mem_writel
-)
+);
 
+end Behavioral;
