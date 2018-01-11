@@ -8,20 +8,20 @@ entity muxalusrca is
     port(
       pcout: in std_logic_vector(15 downto 0);
       A: in std_logic_vector(15 downto 0);
-      mux_op: in std_logic;
-      outsrc: out std_logic_vector(15 downto 0)
+      mux_op_a: in std_logic;
+      outsrc_a: out std_logic_vector(15 downto 0)
     );
   end muxalusrca;
 
   architecture Behavioral of muxalusrca is
 
     begin
-        process(pcout, A, mux_op)
+        process(pcout, A, mux_op_a)
         begin
-        if (mux_op = '0') then
-            outsrc <= pcout;
+        if (mux_op_a = '0') then
+            outsrc_a <= pcout;
         else
-            outsrc <= A;
+            outsrc_a <= A;
         end if;
     end process;
     

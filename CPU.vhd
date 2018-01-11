@@ -64,27 +64,27 @@ architecture Behavioral of CPU is
     signal reg_data_2l: out std_logic_vector(15 downto 0)
     signal pcoutl: in std_logic_vector(15 downto 0);
     signal Al: in std_logic_vector(15 downto 0);
-    signal mux_opl: in std_logic;
-    signal outsrcl: out std_logic_vector(15 downto 0);
+    signal mux_op_al: in std_logic;
+    signal outsrc_al: out std_logic_vector(15 downto 0);
     signal Bl: in std_logic_vector(15 downto 0);
     --con1: in std_logic_vector(15 downto 0):="0000000000000001";
     signal lowl: in std_logic_vector(15 downto 0);
     --con0: in std_logic_vector(15 downto 0):="0000000000000000";
-    signal mux_opl: in std_logic_vector(1 downto 0);
-    signal outsrcl: out std_logic_vector(15 downto 0)
+    signal mux_op_bl: in std_logic_vector(1 downto 0);
+    signal outsrc_bl: out std_logic_vector(15 downto 0)
     signal aluoutl: in std_logic_vector(15 downto 0);
     signal mdrl: in std_logic_vector(15 downto 0);
-    signal mux_opl: in std_logic_vector(1 downto 0);
-    signal outsrcl: out std_logic_vector(15 downto 0);
+    signal mux_op_ml: in std_logic_vector(1 downto 0);
+    signal outsrc_ml: out std_logic_vector(15 downto 0);
     signal alul: in std_logic_vector(15 downto 0);
     signal aluoutl: in std_logic_vector(15 downto 0);
-    signal mux_opl: in std_logic;
-    signal outsrcl: out std_logic_vector(15 downto 0)
+    signal mux_op_pl: in std_logic;
+    signal outsrcl_p: out std_logic_vector(15 downto 0)
     signal rxl: in std_logic_vector(15 downto 0);
     signal ryl: in std_logic_vector(15 downto 0);
     signal rzl: in std_logic_vector(15 downto 0);
-    signal mux_opl: in std_logic_vector(1 downto 0);
-    signal outsrcl: out std_logic_vector(15 downto 0)
+    signal mux_op_rl: in std_logic_vector(1 downto 0);
+    signal outsrc_rl: out std_logic_vector(15 downto 0)
 
 
 component ALU
@@ -235,11 +235,6 @@ component muxregdst
 end component;
 
 
-
-signal clkl 
-
-
-
 begin
 
 module_PC : PC port map(
@@ -273,7 +268,7 @@ module_muxalusrca : muxalusrca  port map(
     outsrc_a=>outsrc_al
 );
 
-module_muxalusrca : muxalusrca  port map(
+module_muxalusrcb : muxalusrcb  port map(
     B=>Bl;
     low=>lowl;
     mux_op_b=>mux_op_bl;

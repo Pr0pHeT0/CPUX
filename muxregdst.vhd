@@ -9,21 +9,21 @@ entity muxregdst is
       rx: in std_logic_vector(15 downto 0);
       ry: in std_logic_vector(15 downto 0);
       rz: in std_logic_vector(15 downto 0);
-      mux_op: in std_logic_vector(1 downto 0);
-      outsrc: out std_logic_vector(15 downto 0)
+      mux_op_r: in std_logic_vector(1 downto 0);
+      outsrc_r: out std_logic_vector(15 downto 0)
     );
 end muxregdst;
 
 architecture Behavioral of muxregdst is
 
     begin
-        process(rx, ry, rz,mux_op)
+        process(rx, ry, rz,mux_op_r)
         begin
-            case mux_op is
-                when "00" => outsrc <= rx;
-                when "01" => outsrc <= ry;
-                when "10" => outsrc <= rz;
-                when others => outsrc <= "ZZZZZZZZZZZZZZZZ";
+            case mux_op_r is
+                when "00" => outsrc_r <= rx;
+                when "01" => outsrc_r <= ry;
+                when "10" => outsrc_r <= rz;
+                when others => outsrcv <= "ZZZZZZZZZZZZZZZZ";
             end case;
 		end process;
 end Behavioral;
