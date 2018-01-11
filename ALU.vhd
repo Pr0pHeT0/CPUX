@@ -35,7 +35,7 @@ architecture Behavioral of ALU is
           when "101" =>
             res := not(alu_srcA);
           when "110" =>           
-            res : = to_stdlogicvector(to_bitvector(alu_srcA) sll conv_integer(alu_srcB)); --sllv luojizuoyi
+            res := to_stdlogicvector(to_bitvector(alu_srcA) sll conv_integer(alu_srcB)); --sllv luojizuoyi
           when "111" =>            
             res := to_stdlogicvector(to_bitvector(alu_srcA) srl conv_integer(alu_srcB)); -- srlv luojiyouyi  
           when others =>

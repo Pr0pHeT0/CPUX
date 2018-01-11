@@ -23,7 +23,7 @@ architecture Behavioral of muxregdst is
                 when "00" => outsrc_r <= rx;
                 when "01" => outsrc_r <= ry;
                 when "10" => outsrc_r <= rz;
-                when others => outsrcv <= "ZZZZZZZZZZZZZZZZ";
+                when others => outsrc_r <= "ZZZZZZZZZZZZZZZZ";
             end case;
 		end process;
 end Behavioral;

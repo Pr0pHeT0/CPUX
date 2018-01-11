@@ -22,15 +22,15 @@ entity mem is
 	);
 end mem;
 
-architecture Behavioral of test is
-	-- signal status:std_logic_vector(4 downto 0):="00000";
+architecture Behavioral of mem is
+	signal status:std_logic_vector(2 downto 0):="000";
 	-- signal ct :STD_LOGIC_VECTOR (15 downto 0);
 	-- signal ram_a :STD_LOGIC_VECTOR (15 downto 0);
 begin
 process(mem_write_data,mem_read,mem_write)
-	variable status:std_logic_vector(2 downto 0):="000";
+	-- variable status:std_logic_vector(2 downto 0):="000";
 	variable data :STD_LOGIC_VECTOR (15 downto 0);
-	variable address :STD_LOGIC_VECTOR (15 downto 0);
+	variable address :STD_LOGIC_VECTOR (17 downto 0);
 begin	
 	data := mem_write_data;
 	address(17 downto 0) := "00" & mem_addr_rw(15 downto 0);
