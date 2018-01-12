@@ -55,7 +55,7 @@ end Controler;
 
 architecture Behavioral of Controler is
 
-	signal bzero:std_logic;
+	--signal bzero:std_logic;
 	type shower_state is(PC,ALU,Mem,Reg);
 	signal shower : shower_state ;
 	type controler_state is(instruction_fetch,decode,execute,mem_control,write_reg);
@@ -80,7 +80,7 @@ architecture Behavioral of Controler is
 
 	--signal imme:std_logic_vector(15 downto 0);
 
-	signal tmpb_zero:std_logic;
+	--signal tmpb_zero:std_logic;
 	signal tmp_light:std_logic_vector(15 downto 0);
 begin
 	light<=tmp_light;
@@ -133,29 +133,29 @@ begin
 		end if;
 	end process;
 	
-	process(rst,bZero_Ctrl)
-	begin
-		if rst='0' then
-			bzero<='0';
-		elsif rising_edge(bZero_Ctrl)then
-			if bzero='0' then
-				bzero<='1';
-				tmpb_zero<='0';
-			elsif bzero='1' then
-				tmpb_zero<='1';
-				bzero<='0';
-			end if;
-		end if;
-	end process;
+	-- process(rst,bZero_Ctrl)
+	-- begin
+	-- 	if rst='0' then
+	-- 		bzero<='0';
+	-- 	elsif rising_edge(bZero_Ctrl)then
+	-- 		if bzero='0' then
+	-- 			bzero<='1';
+	-- 			tmpb_zero<='0';
+	-- 		elsif bzero='1' then
+	-- 			tmpb_zero<='1';
+	-- 			bzero<='0';
+	-- 		end if;
+	-- 	end if;
+	-- end process;
 	
-	process(bzero)
-	begin
-		if bzero='1' then
-			PCWriteCond<='1';
-		elsif bzero='0'then
-			PCWriteCond<='0';
-		end if;
-	end process;
+	-- process(bzero)
+	-- begin
+	-- 	if bzero='1' then
+	-- 		PCWriteCond<='1';
+	-- 	elsif bzero='0'then
+	-- 		PCWriteCond<='0';
+	-- 	end if;
+	-- end process;
 	
 	process(rst,clk)
 	begin
