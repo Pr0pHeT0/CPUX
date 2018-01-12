@@ -40,9 +40,30 @@ component CONTROLER
 		instructions:in STD_LOGIC_VECTOR(15 downto 0);
 		light:out STD_LOGIC_VECTOR(15 downto 0);
 		showCtrl:in STD_LOGIC;
-		bZero_ctrl:in  STD_LOGIC
+        bZero_ctrl:in  STD_LOGIC;
+        PCWrite:out std_logic;
+		-- PCWriteCond:std_logic;
+		PCSource:out std_logic;
+		ALUop:out std_logic_vector(2 downto 0);
+		ALUSrcA:out std_logic;
+		ALUSrcB:out std_logic_vector(1 downto 0);
+		MemRead:out std_logic;
+		MemWrite:out std_logic;
+		IRWrite:out std_logic;
+		MemtoReg:out std_logic_vector(1 downto 0);
+		RegWrite:out std_logic_vector(2 downto 0);
+		RegDst:out std_logic_vector(1 downto 0);
+		IorD:out std_logic;
+		rx:out std_logic_vector(2 downto 0);
+		ry:out std_logic_vector(2 downto 0);
+		rz:out std_logic_vector(2 downto 0);
+		imme:out std_logic_vector(15 downto 0)
+		--tmpb_zero:out std_logic;
+		--tmp_light:out std_logic_vector(15 downto 0)
+		
     );
 end component;
+
 
 component PC
     Port 
@@ -54,6 +75,10 @@ component PC
     );
 end component;
 
+signal signal_clk : STD_LOGIC;
+signal signal_pc_in : std_logic_vector(15 downto 0);
+signal signal_pc_write : std_logic;
+signal signal_pc_out : std_logic_vector(15 downto 0);
 
 component mem
     Port 
