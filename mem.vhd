@@ -22,6 +22,8 @@ entity mem is
 	);
 end mem;
 
+signal signal_mem_read_data : std_logic_vector(15 downto 0);
+
 architecture Behavioral of mem is
 	signal status:std_logic_vector(2 downto 0):="000";
 	-- signal ct :STD_LOGIC_VECTOR (15 downto 0);

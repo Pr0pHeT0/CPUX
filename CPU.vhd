@@ -64,6 +64,8 @@ component CONTROLER
     );
 end component;
 
+signal signal_PCWrite: std_logic;
+signal signal_IorD: std_logic;
 
 component PC
     Port 
@@ -75,9 +77,9 @@ component PC
     );
 end component;
 
-signal signal_clk : STD_LOGIC;
-signal signal_pc_in : std_logic_vector(15 downto 0);
-signal signal_pc_write : std_logic;
+-- signal signal_clk : STD_LOGIC;
+-- signal signal_pc_in : std_logic_vector(15 downto 0);
+-- signal signal_pc_write : std_logic;
 signal signal_pc_out : std_logic_vector(15 downto 0);
 
 component mem
@@ -98,6 +100,7 @@ component mem
     );
 end component;
 
+signal signal_mem_read_data : std_logic_vector(15 downto 0);
 
 component IR
     Port 
@@ -134,6 +137,8 @@ component REG
         reg_data_2: out std_logic_vector(15 downto 0)
     );
 end component;
+
+signal signal_reg_data_2: std_logic_vector(15 downto 0);
 
 
 component muxalusrca
@@ -180,6 +185,7 @@ component muxpcsource
     );
 end component;
 
+signal signal_outsrc_p: std_logic_vector(15 downto 0);
 
 component muxregdst
     Port 
@@ -201,6 +207,19 @@ component mux_IorD
 			outsrc_i: out std_logic_vector(15 downto 0)
     );
 end component;
+
+signal signal_aluout: std_logic_vector(15 downto 0);
+signal outsrc_i: std_logic_vector(15 downto 0);
+    
+
+
+
+
+
+
+
+
+
 
     signal clkl : STD_LOGIC;
     signal alu_srcAl : std_logic_vector(15 downto 0);
@@ -277,10 +296,32 @@ end component;
 begin
 
 module_PC : PC port map(
-    clk => clkl,
-    pc_in => outsrc_pl,
-    pc_write => pc_writel,
-    pc_out => pc_outl
+    clk => clk,
+    pc_in => signal_outsrc_p,
+    pc_write => signal_PCWrite,
+    pc_out => signal_pc_out
+);
+
+module_mux_IorD : mux_IorD  port map(
+    pc_out_a=>signal_pc_out,
+    aluout=>signal_aluout,
+    mux_op_i=>signal_IorD,
+    outsrc_i=>signal_outsrc_i
+);
+
+module_mem : mem port map(
+    clk => clk,
+    mem_en => ram_en,
+    mem_oe => ram_oe,
+    mem_rw => ram_rw,
+    mem_addr => ram_addr,
+    mem_data => ram_data,
+    mem_write_data => signal_reg_data_2,
+    mem_read_data => mem_read_datal,
+    mem_addr_rw => outsrc_il,
+    IR_Write => IR_Writel,
+    mem_read => mem_readl,
+    mem_write => mem_writel
 );
 
 module_ALU : ALU port map(
@@ -307,12 +348,7 @@ module_muxalusrca : muxalusrca  port map(
     outsrc_a=>outsrc_al
 );
 
-module_mux_IorD : mux_IorD  port map(
-    pc_out_a=>pc_outl,
-    aluout=>aluoutl,
-    mux_op_i=>mux_op_il,
-    outsrc_i=>outsrc_il
-);
+
 
 module_muxalusrcb : muxalusrcb  port map(
     B=>Bl,
@@ -368,19 +404,6 @@ module_DR : DR  port map(
     DR_out=>DR_outl
 );
 
-module_mem : mem port map(
-    clk => clkl,
-    mem_en => mem_enl,
-    mem_oe => mem_oel,
-    mem_rw => mem_rwl,
-    mem_addr => mem_addrl,
-    mem_data => mem_datal,
-    mem_write_data => mem_write_datal,
-    mem_read_data => mem_read_datal,
-    mem_addr_rw => outsrc_il,
-    IR_Write => IR_Writel,
-    mem_read => mem_readl,
-    mem_write => mem_writel
-);
+
 
 end Behavioral;
