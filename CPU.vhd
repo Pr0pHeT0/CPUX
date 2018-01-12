@@ -6,6 +6,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity CPU is 
     port
     (
+        rst : STD_LOGIC;
         clk : STD_LOGIC;
         ram_oe : STD_LOGIC;
         ram_rw : STD_LOGIC;
@@ -43,8 +44,8 @@ component CONTROLER
 		--light:out STD_LOGIC_VECTOR(15 downto 0);
 		--showCtrl:in STD_LOGIC;
         --bZero_ctrl:in  STD_LOGIC;
-        PCWrite:out std_logic;
-		-- PCWriteCond:std_logic;
+        -- PCWriteCond:std_logic;
+        PCWrite:out std_logic;		
 		PCSource:out std_logic;
 		ALUop:out std_logic_vector(2 downto 0);
 		ALUSrcA:out std_logic;
@@ -251,87 +252,6 @@ signal signal_aluout: std_logic_vector(15 downto 0);
 signal outsrc_i: std_logic_vector(15 downto 0);
     
 
-
-
-
-
-
-
-
-
-
-    signal clkl : STD_LOGIC;
-    signal alu_srcAl : std_logic_vector(15 downto 0);
-    signal alu_srcBl : std_logic_vector(15 downto 0);
-    signal alu_outl : std_logic_vector(15 downto 0);
-    signal alu_opl : std_logic_vector(2 downto 0);
-    signal rstl : STD_LOGIC;
-    --signal clkl : STD_LOGIC;
-    signal clk0l : STD_LOGIC;
-    signal instructionsl : STD_LOGIC_VECTOR(15 downto 0);
-    signal lightl : STD_LOGIC_VECTOR(15 downto 0);
-    signal showCtrll : STD_LOGIC;
-    signal bZero_ctrll : STD_LOGIC;
-    --signal clkl : STD_LOGIC;
-    --signal pc_inl : std_logic_vector(15 downto 0);
-    signal pc_writel : std_logic;
-    signal pc_outl : std_logic_vector(15 downto 0);
-    --signal clkl : STD_LOGIC;		
-    signal mem_enl : STD_LOGIC;
-    signal mem_oel : STD_LOGIC;
-    signal mem_rwl : STD_LOGIC;
-    --signal mem_addrl : STD_LOGIC_VECTOR (17 downto 0);
-    signal mem_datal : STD_LOGIC_VECTOR (15 downto 0);
-    signal mem_write_datal : std_logic_vector(15 downto 0);
-    signal mem_read_datal : std_logic_vector(15 downto 0);
-    signal mem_addr_rwl : std_logic_vector(15 downto 0);
-    signal IR_Writel : std_logic;		
-    signal mem_readl : std_logic;
-    signal mem_writel : std_logic;
-    --signal clkl : STD_LOGIC;
-    --signal IR_inl : std_logic_vector(15 downto 0);
-    --signal IR_writel : std_logic;           
-    signal IR_outl : std_logic_vector(15 downto 0);
-    --signal clkl : STD_LOGIC;
-    --signal DR_inl : std_logic_vector(15 downto 0);
-    signal DR_writel : std_logic;           
-    signal DR_outl : std_logic_vector(15 downto 0);
-    --signal clkl : std_logic;
-    signal reg_num_1l : std_logic_vector(3 downto 0);
-    signal reg_num_2l : std_logic_vector(3 downto 0);
-    signal reg_write_numl : std_logic_vector(3 downto 0) := "0000";
-    signal reg_write_datal : std_logic_vector(15 downto 0);
-    signal write_oel : std_logic := '0';
-    signal reg_data_1l : std_logic_vector(15 downto 0);
-    signal reg_data_2l : std_logic_vector(15 downto 0);
-    --signal pc_outl : std_logic_vector(15 downto 0);
-    signal Al : std_logic_vector(15 downto 0);
-    signal mux_op_al : std_logic;
-    signal outsrc_al : std_logic_vector(15 downto 0);
-    signal Bl : std_logic_vector(15 downto 0);
-    --con1: in std_logic_vector(15 downto 0):="0000000000000001";
-    signal lowl: std_logic_vector(15 downto 0);
-    --con0: in std_logic_vector(15 downto 0):="0000000000000000";
-    signal mux_op_bl : std_logic_vector(1 downto 0);
-    signal outsrc_bl : std_logic_vector(15 downto 0);
-    signal aluoutl : std_logic_vector(15 downto 0);
-    signal mdrl : std_logic_vector(15 downto 0);
-    signal mux_op_ml : std_logic_vector(1 downto 0);
-    signal outsrc_ml : std_logic_vector(15 downto 0);
-    signal alul : std_logic_vector(15 downto 0);
-    --signal aluoutl : std_logic_vector(15 downto 0);
-    signal mux_op_pl : std_logic;
-    signal outsrc_pl : std_logic_vector(15 downto 0);
-    signal rxl : std_logic_vector(15 downto 0);
-    signal ryl : std_logic_vector(15 downto 0);
-    signal rzl : std_logic_vector(15 downto 0);
-    signal mux_op_rl : std_logic_vector(1 downto 0);
-    signal outsrc_rl : std_logic_vector(15 downto 0);
-	 --signal pc_outl : std_logic_vector(15 downto 0);
-	 --signal aluoutl : std_logic_vector(15 downto 0);
-	 signal mux_op_il : std_logic;
-	 signal outsrc_il : std_logic_vector(15 downto 0);
-
 begin
 
 module_PC : PC port map(
@@ -416,10 +336,23 @@ module_CONTROLER : CONTROLER port map(
     rst => rst,
     clk => clk,
     --clk0 => clk0,
-    instructions => instructions,
-    light => lightl,
-    showCtrl => showCtrll,
-    bZero_ctrl => bZero_ctrll
+    instructions => signal_IR_out,
+    PCWrite => signal_PCWrite,
+    PCSource => signal_PCSource,
+    ALUop => signal_ALUop,
+    ALUSrcA => signal_ALUSrcA,
+    ALUSrcB => signal_ALUSrcB,
+    MemRead => signal_MemRead,
+    MemWrite => signal_MemWrite,
+    IRWrite => signal_IRWrite,
+    MemtoReg => signal_MemtoReg,
+    RegWrite => signal_RegWrite,
+    RegDst => signal_RegDst,
+    IorD => signal_IorD,
+    rx => signal_rx,
+    ry => signal_ry,
+    rz => signal_rz,
+    imme => signal_imme
 );
 
 module_RR : RR  port map(
