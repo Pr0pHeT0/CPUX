@@ -186,29 +186,29 @@ begin
 					IRWrite<='1';
 					RegWrite<="000";
 					state<=decode;
-				when decode=>
+				when decode=>							  	-------译码
 					case instructions(15 downto 11)is
 						when "00001"=>                       -------ADDU
 							rx<=instructions(10 downto 8);
 							ry<=instructions(7 downto 5);
-							rz<=instructions(4 downto 2);						
+							--rz<=instructions(4 downto 2);						
 						when "00010"=>                       -------SUB
 							rx<=instructions(10 downto 8);
 							ry<=instructions(7 downto 5);
-							rz<=instructions(4 downto 2);
+							--rz<=instructions(4 downto 2);
 						when "00011"=>                       -------LI
-							rx<=instructions(10 downto 8);
+							--rx<=instructions(10 downto 8);
 							imme<="00000000" & instructions(7 downto 0);
 						when "00100"=>                       -------LW
 							rx<=instructions(10 downto 8);
-							ry<=instructions(7 downto 5);
+							--ry<=instructions(7 downto 5);
 							imme<="00000000000" & instructions(4 downto 0);
 						when "00101"=>                       -------SW
 							rx<=instructions(10 downto 8);
-							ry<=instructions(7 downto 5);
+							--ry<=instructions(7 downto 5);
 							imme<="00000000000" & instructions(4 downto 0);
 						when "00110"=>                       -------MV
-							rx<=instructions(10 downto 8);
+							--rx<=instructions(10 downto 8);
 							ry<=instructions(7 downto 5);
 						when "00111"=>                       -------SLTU
 							rx<=instructions(10 downto 8);
@@ -222,7 +222,7 @@ begin
 							rx<=instructions(10 downto 8);
 							ry<=instructions(7 downto 5);
 						when "01011"=>                       -------NOT
-							rx<=instructions(10 downto 8);
+							--rx<=instructions(10 downto 8);
 							ry<=instructions(7 downto 5);
 						when "01100"=>                       -------SLLV
 							rx<=instructions(10 downto 8);
@@ -235,7 +235,8 @@ begin
 							imme<="00000000" & instructions(7 downto 0);
 						when others=>
 							NULL;
-													          -------译码					IRWrite<='0';
+															
+					IRWrite<='0';
 					MemRead<='0';
 					PCWrite<='0';
 					ALUSrcA<='0';

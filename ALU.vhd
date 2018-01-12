@@ -30,7 +30,7 @@ architecture Behavioral of ALU is
             if(alu_srcA<alu_srcB) then 
               res := "0000000000000001";
             elsif(alu_srcA>=alu_srcB) then 
-              res :="0000000000000000";
+              res := "0000000000000000";
             end if;          
           when "101" =>
             res := not(alu_srcA);
