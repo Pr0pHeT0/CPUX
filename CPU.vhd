@@ -64,8 +64,11 @@ component CONTROLER
     );
 end component;
 
-signal signal_PCWrite: std_logic;
-signal signal_IorD: std_logic;
+signal signal_PCWrite : std_logic;
+signal signal_IorD : std_logic;
+signal signal_IRWrite : std_logic;
+signal signal_MemRead : std_logic;
+signal signal_MemWrite : std_logic;
 
 component PC
     Port 
@@ -111,6 +114,7 @@ component IR
         IR_out : out std_logic_vector(15 downto 0)
     );
 end component;
+
 
 
 component DR
@@ -317,11 +321,18 @@ module_mem : mem port map(
     mem_addr => ram_addr,
     mem_data => ram_data,
     mem_write_data => signal_reg_data_2,
-    mem_read_data => mem_read_datal,
-    mem_addr_rw => outsrc_il,
-    IR_Write => IR_Writel,
-    mem_read => mem_readl,
-    mem_write => mem_writel
+    mem_read_data => signal_mem_read_data,
+    mem_addr_rw => signal_outsrc_i,
+    IR_Write => signal_IRWrite,
+    mem_read => signal_MemRead,
+    mem_write => signal_MemWrite
+);
+
+module_IR : IR  port map(
+    clk=>clkl,
+    IR_in=>mem_read_datal,
+    IR_write=>IR_writel,
+    IR_out=>IR_outl
 );
 
 module_ALU : ALU port map(
@@ -390,12 +401,6 @@ module_REG : REG  port map(
     reg_data_2=>reg_data_2l
 );
 
-module_IR : IR  port map(
-    clk=>clkl,
-    IR_in=>mem_read_datal,
-    IR_write=>IR_writel,
-    IR_out=>IR_outl
-);
 
 module_DR : DR  port map(
     clk=>clkl,
