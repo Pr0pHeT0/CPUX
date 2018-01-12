@@ -115,7 +115,7 @@ component IR
     );
 end component;
 
-
+signal signal_IR_out : std_logic_vector(15 downto 0);
 
 component DR
     Port 
@@ -323,16 +323,16 @@ module_mem : mem port map(
     mem_write_data => signal_reg_data_2,
     mem_read_data => signal_mem_read_data,
     mem_addr_rw => signal_outsrc_i,
-    IR_Write => signal_IRWrite,
+    --IR_Write => signal_IRWrite,
     mem_read => signal_MemRead,
     mem_write => signal_MemWrite
 );
 
 module_IR : IR  port map(
-    clk=>clkl,
-    IR_in=>mem_read_datal,
-    IR_write=>IR_writel,
-    IR_out=>IR_outl
+    clk=>clk,
+    IR_in=>signal_mem_read_data,
+    IR_write=>signal_IRWrite,
+    IR_out=>signal_IR_out
 );
 
 module_ALU : ALU port map(
