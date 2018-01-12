@@ -23,13 +23,35 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity Controler is
-	Port( rst:in STD_LOGIC;
-		  clk:in STD_LOGIC;
-		  clk0:in STD_LOGIC;
-		  instructions:in STD_LOGIC_VECTOR(15 downto 0);
-		  light:out STD_LOGIC_VECTOR(15 downto 0);
-		  showCtrl:in STD_LOGIC;
-		  bZero_ctrl:in  STD_LOGIC);
+	Port( 
+		rst:in STD_LOGIC;
+		clk:in STD_LOGIC;
+		clk0:in STD_LOGIC;
+		instructions:in STD_LOGIC_VECTOR(15 downto 0);
+		light:out STD_LOGIC_VECTOR(15 downto 0);
+		showCtrl:in STD_LOGIC;
+		bZero_ctrl:in  STD_LOGIC;  
+		signal state : controler_state;
+		signal PCWrite:std_logic;
+		signal PCWriteCond:std_logic;
+		signal PCSource:std_logic;
+		signal ALUop:std_logic_vector(2 downto 0);
+		signal ALUSrcA:std_logic;
+		signal ALUSrcB:std_logic_vector(1 downto 0);
+		signal MemRead:std_logic;
+		signal MemWrite:std_logic;
+		signal IRWrite:std_logic;
+		signal MemtoReg:std_logic_vector(1 downto 0);
+		signal RegWrite:std_logic_vector(2 downto 0);
+		signal RegDst:std_logic_vector(1 downto 0);
+		signal IorD:std_logic;
+		signal rx:std_logic_vector(2 downto 0);
+		signal ry:std_logic_vector(2 downto 0);
+		signal rz:std_logic_vector(2 downto 0);
+		signal imme:std_logic_vector(15 downto 0);
+		signal tmpb_zero:std_logic;
+		signal tmp_light:std_logic_vector(15 downto 0)
+		);
 end Controler;
 
 architecture Behavioral of Controler is
