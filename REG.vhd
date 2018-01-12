@@ -8,7 +8,7 @@ entity REG is
         clk: in std_logic;
         reg_num_1: in std_logic_vector(3 downto 0);
         reg_num_2: in std_logic_vector(3 downto 0);
-        -- reg_write_num: in std_logic_vector(3 downto 0) := "0000";
+        reg_write_num: in std_logic_vector(3 downto 0) := "0000";
         reg_write_data: in std_logic_vector(15 downto 0);
         write_oe: in std_logic := '0';
         reg_data_1: out std_logic_vector(15 downto 0);
@@ -26,23 +26,23 @@ entity REG is
         signal r6: std_logic_vector(15 downto 0) := "0000000000000000";
         signal r7: std_logic_vector(15 downto 0) := "0000000000000000";
     begin
-    -- process(clk)
-    --     begin
-    --         if(clk'event and clk = '0') then
-    --             if (write_oe = '1') then
-    --                 case reg_write_num is
-    --                     when "0000" => r0 <= reg_write_data;
-    --                     when "0001" => r1 <= reg_write_data;
-    --                     when "0010" => r2 <= reg_write_data;
-    --                     when "0011" => r3 <= reg_write_data;
-    --                     when "1000" => T <= reg_write_data;
-    --                     when "1001" => SP <= reg_write_data;
-    --                     when "1010" => IH <= reg_write_data;
-    --                     when others => null;
-    --                 end case;
-    --             end if;
-    --         end if;
-    --     end process;
+    process(clk)
+        begin
+            if(clk'event and clk = '0') then
+                if (write_oe = '1') then
+                    case reg_write_num is
+                        when "0000" => r0 <= reg_write_data;
+                        when "0001" => r1 <= reg_write_data;
+                        when "0010" => r2 <= reg_write_data;
+                        when "0011" => r3 <= reg_write_data;
+                        when "1000" => T <= reg_write_data;
+                        when "1001" => SP <= reg_write_data;
+                        when "1010" => IH <= reg_write_data;
+                        when others => null;
+                    end case;
+                end if;
+            end if;
+        end process;
     
         process(reg_num_1, r0, r1, r2, r3, r4, r5, r6, r7, T, SP, IH, RA)
         begin
