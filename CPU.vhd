@@ -69,6 +69,8 @@ signal signal_IorD : std_logic;
 signal signal_IRWrite : std_logic;
 signal signal_MemRead : std_logic;
 signal signal_MemWrite : std_logic;
+signal signal_RegDst : std_logic_vector(1 downto 0);
+signal signal_RegWrite : std_logic_vector(2 downto 0);
 signal signal_rx : std_logic_vector(2 downto 0);
 signal signal_ry : std_logic_vector(2 downto 0);
 signal signal_rz : std_logic_vector(2 downto 0);
@@ -146,8 +148,8 @@ component REG
     );
 end component;
 
+signal signal_reg_data_1: std_logic_vector(15 downto 0);
 signal signal_reg_data_2: std_logic_vector(15 downto 0);
-
 
 component muxalusrca
     Port 
@@ -182,6 +184,7 @@ component muxmemtoreg
     );
 end component;
 
+signal signal_outsrc_m : std_logic_vector(15 downto 0);
 
 component muxpcsource
     Port 
@@ -342,11 +345,11 @@ module_IR : IR  port map(
 );
 
 module_muxregdst : muxregdst  port map(
-    rx=>rxl,
-    ry=>ryl,
-    rz=>rzl,
-    mux_op_r=>mux_op_rl,
-    outsrc_r=>outsrc_rl
+    rx=>signal_rx,
+    ry=>signal_ry,
+    rz=>signal_rz,
+    mux_op_r=>signal_RegDst,
+    outsrc_r=>signal_outsrc_r
 );
 
 module_REG : REG  port map(
@@ -354,10 +357,26 @@ module_REG : REG  port map(
     reg_num_1=>signal_rx,
     reg_num_2=>signal_ry,
     reg_write_num=>signal_outsrc_r,
-    reg_write_data=>reg_write_datal,
-    write_oe=>write_oel,
-    reg_data_1=>reg_data_1l,
-    reg_data_2=>reg_data_2l
+    reg_write_data=>signal_outsrc_m,
+    write_oe=>signal_RegWrite,
+    reg_data_1=>signal_reg_data_1,
+    reg_data_2=>signal_reg_data_2
+);
+
+module_muxalusrca : muxalusrca  port map(
+    pc_out=>pc_outl,
+    A=>Al,
+    mux_op_a=>mux_op_al,
+    outsrc_a=>outsrc_al
+);
+
+
+
+module_muxalusrcb : muxalusrcb  port map(
+    B=>Bl,
+    low=>lowl,
+    mux_op_b=>mux_op_bl,
+    outsrc_b=>outsrc_bl
 );
 
 module_ALU : ALU port map(
@@ -378,21 +397,6 @@ module_CONTROLER : CONTROLER port map(
     bZero_ctrl => bZero_ctrll
 );
 
-module_muxalusrca : muxalusrca  port map(
-    pc_out=>pc_outl,
-    A=>Al,
-    mux_op_a=>mux_op_al,
-    outsrc_a=>outsrc_al
-);
-
-
-
-module_muxalusrcb : muxalusrcb  port map(
-    B=>Bl,
-    low=>lowl,
-    mux_op_b=>mux_op_bl,
-    outsrc_b=>outsrc_bl
-);
 
 module_muxmemtoreg : muxmemtoreg  port map(
     aluout=>aluoutl,
