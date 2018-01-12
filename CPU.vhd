@@ -31,6 +31,8 @@ component ALU
     );
 end component;
 
+signal signal_alu_out : std_logic_vector(15 downto 0);
+
 component CONTROLER
     Port 
     (   
@@ -74,7 +76,10 @@ signal signal_RegWrite : std_logic_vector(2 downto 0);
 signal signal_rx : std_logic_vector(2 downto 0);
 signal signal_ry : std_logic_vector(2 downto 0);
 signal signal_rz : std_logic_vector(2 downto 0);
-
+signal signal_ALUSrcA : std_logic;
+signal signal_ALUSrcB : std_logic_vector(1 downto 0);
+signal signal_imme : std_logic_vector(15 downto 0);
+signal signal_ALUop : std_logic_vector(2 downto 0);
 
 component PC
     Port 
@@ -161,6 +166,8 @@ component muxalusrca
     );
 end component;
 
+signal signal_outsrc_a: std_logic_vector(15 downto 0);
+
 
 component muxalusrcb
     Port 
@@ -173,6 +180,8 @@ component muxalusrcb
         outsrc_b: out std_logic_vector(15 downto 0)
     );
 end component;
+
+signal signal_outsrc_b: std_logic_vector(15 downto 0);
 
 component muxmemtoreg
     Port 
@@ -364,27 +373,26 @@ module_REG : REG  port map(
 );
 
 module_muxalusrca : muxalusrca  port map(
-    pc_out=>pc_outl,
-    A=>Al,
-    mux_op_a=>mux_op_al,
-    outsrc_a=>outsrc_al
+    pc_out=>signal_pc_out,
+    A=>signal_reg_data_1,
+    mux_op_a=>signal_ALUSrcA,
+    outsrc_a=>signal_outsrc_a
 );
-
 
 
 module_muxalusrcb : muxalusrcb  port map(
-    B=>Bl,
-    low=>lowl,
-    mux_op_b=>mux_op_bl,
-    outsrc_b=>outsrc_bl
+    B=>signal_reg_data_2,
+    low=>signal_imme,
+    mux_op_b=>signal_ALUSrcB,
+    outsrc_b=>signal_outsrc_b
 );
 
 module_ALU : ALU port map(
-    clk => clkl,
-    alu_srcA => alu_srcAl,
-    alu_srcB => alu_srcBl,
-    alu_out => alu_outl,
-    alu_op => alu_opl
+    clk => clk,
+    alu_srcA => signal_outsrc_a,
+    alu_srcB => signal_outsrc_b,
+    alu_out => signal_alu_out,
+    alu_op => signal_ALUop
 );
 
 module_CONTROLER : CONTROLER port map(
