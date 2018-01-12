@@ -38,11 +38,11 @@ component CONTROLER
     (   
         rst:in STD_LOGIC;
 		clk:in STD_LOGIC;
-		clk0:in STD_LOGIC;
+		--clk0:in STD_LOGIC;
 		instructions:in STD_LOGIC_VECTOR(15 downto 0);
-		light:out STD_LOGIC_VECTOR(15 downto 0);
-		showCtrl:in STD_LOGIC;
-        bZero_ctrl:in  STD_LOGIC;
+		--light:out STD_LOGIC_VECTOR(15 downto 0);
+		--showCtrl:in STD_LOGIC;
+        --bZero_ctrl:in  STD_LOGIC;
         PCWrite:out std_logic;
 		-- PCWriteCond:std_logic;
 		PCSource:out std_logic;
@@ -80,6 +80,10 @@ signal signal_ALUSrcA : std_logic;
 signal signal_ALUSrcB : std_logic_vector(1 downto 0);
 signal signal_imme : std_logic_vector(15 downto 0);
 signal signal_ALUop : std_logic_vector(2 downto 0);
+signal signal_PCSource : std_logic;
+signal signal_MemtoReg : std_logic_vector(1 downto 0);
+
+
 
 component PC
     Port 
@@ -132,11 +136,24 @@ component DR
     Port 
     (   
         clk : in  STD_LOGIC;
-        DR_in : in std_logic_vector(15 downto 0);
-        DR_write : in std_logic;           
+        DR_in : in std_logic_vector(15 downto 0);           
         DR_out : out std_logic_vector(15 downto 0)
     );
 end component;
+
+signal signal_DR_out : std_logic_vector(15 downto 0);
+
+component RR
+    Port 
+    (   
+        clk : in  STD_LOGIC;
+        RR_in : in std_logic_vector(15 downto 0);          
+        RR_out : out std_logic_vector(15 downto 0)
+    );
+end component;
+
+
+signal signal_RR_out : std_logic_vector(15 downto 0);
 
 
 component REG
@@ -326,7 +343,7 @@ module_PC : PC port map(
 
 module_mux_IorD : mux_IorD  port map(
     pc_out_a=>signal_pc_out,
-    aluout=>signal_aluout,
+    aluout=>signal_RR_out,
     mux_op_i=>signal_IorD,
     outsrc_i=>signal_outsrc_i
 );
@@ -396,39 +413,40 @@ module_ALU : ALU port map(
 );
 
 module_CONTROLER : CONTROLER port map(
-    rst => rstl,
-    clk => clkl,
-    clk0 => clk0l,
-    instructions => instructionsl,
+    rst => rst,
+    clk => clk,
+    --clk0 => clk0,
+    instructions => instructions,
     light => lightl,
     showCtrl => showCtrll,
     bZero_ctrl => bZero_ctrll
 );
 
-
-module_muxmemtoreg : muxmemtoreg  port map(
-    aluout=>aluoutl,
-    mdr=>mdrl,
-    mux_op_m=>mux_op_ml,
-    outsrc_m=>outsrc_ml
+module_RR : RR  port map(
+    clk => clk,
+    RR_in => signal_alu_out,
+    RR_out => signal_RR_out
 );
 
 module_muxpcsource : muxpcsource  port map(
-    pc_out=>alul,
-    aluout=>aluoutl,
-    mux_op_p=>mux_op_pl,
-    outsrc_p=>outsrc_pl
+    pc_out=>signal_alu_out,
+    aluout=>signal_RR_out,
+    mux_op_p=>signal_PCSource,
+    outsrc_p=>signal_outsrc_p
+);
+
+module_muxmemtoreg : muxmemtoreg  port map(
+    aluout=>signal_RR_out,
+    mdr=>signal_DR_out,
+    mux_op_m=>signal_MemtoReg,
+    outsrc_m=>signal_outsrc_m
 );
 
 
-
-
-
 module_DR : DR  port map(
-    clk=>clkl,
-    DR_in=>mem_read_datal,
-    DR_write=>DR_writel,
-    DR_out=>DR_outl
+    clk=>clk,
+    DR_in=>signal_outsrc_i,
+    DR_out=>signal_DR_out
 );
 
 
