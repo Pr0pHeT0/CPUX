@@ -22,13 +22,9 @@ entity REG is
         signal r2: std_logic_vector(15 downto 0) := "0000000000000000";
         signal r3: std_logic_vector(15 downto 0) := "0000000000000000";
         signal r4: std_logic_vector(15 downto 0) := "0000000000000000";
-        signal r5: std_logic_vector(15 downto 0) := "0000000000000000";
+        signal r5:  std_logic_vector(15 downto 0) := "0000000000000000";
         signal r6: std_logic_vector(15 downto 0) := "0000000000000000";
         signal r7: std_logic_vector(15 downto 0) := "0000000000000000";
-        signal RA: std_logic_vector(15 downto 0) := "0000000000000000";
-        signal T: std_logic_vector(15 downto 0) := "0000000000000000";
-        signal SP: std_logic_vector(15 downto 0) := "0000000000000000";
-        signal IH: std_logic_vector(15 downto 0) := "0000000000000000";
     begin
     process(clk)
         begin
@@ -39,10 +35,6 @@ entity REG is
                         when "0001" => r1 <= reg_write_data;
                         when "0010" => r2 <= reg_write_data;
                         when "0011" => r3 <= reg_write_data;
-                        when "0100" => r4 <= reg_write_data;
-                        when "0101" => r5 <= reg_write_data;
-                        when "0110" => r6 <= reg_write_data;
-                        when "0111" => r7 <= reg_write_data;
                         when "1000" => T <= reg_write_data;
                         when "1001" => SP <= reg_write_data;
                         when "1010" => IH <= reg_write_data;

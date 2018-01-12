@@ -37,8 +37,8 @@ architecture Behavioral of Controler is
 signal bzero:std_logic;
 type shower_state is(PC,ALU,Mem,Reg);
 signal shower : shower_state ;
-type controcer_state is(instruction_fetch,decode,execute,mem_control,write_reg);
-signal state : controcer_state;
+type controler_state is(instruction_fetch,decode,execute,mem_control,write_reg);
+signal state : controler_state;
 signal PCWrite:std_logic;
 signal PCWriteCond:std_logic;
 signal PCSource:std_logic;
@@ -52,7 +52,13 @@ signal MemtoReg:std_logic_vector(1 downto 0);
 signal RegWrite:std_logic_vector(2 downto 0);
 signal RegDst:std_logic_vector(1 downto 0);
 signal IorD:std_logic;
- 
+
+signal rx:std_logic_vector(2 downto 0);
+signal ry:std_logic_vector(2 downto 0);
+signal rz:std_logic_vector(2 downto 0);
+
+signal imme:std_logic_vector(15 downto 0);
+
 signal tmpb_zero:std_logic;
 signal tmp_light:std_logic_vector(15 downto 0);
 begin
@@ -159,8 +165,56 @@ begin
 					IRWrite<='1';
 					RegWrite<="000";
 					state<=decode;
-				when decode=>                               -------译码
-					IRWrite<='0';
+				when decode=>
+					case instructions(15 downto 11)is
+						when "00001"=>                       -------ADDU
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+							rz<=instructions(4 downto 2);						
+						when "00010"=>                       -------SUB
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+							rz<=instructions(4 downto 2);
+						when "00011"=>                       -------LI
+							rx<=instructions(10 downto 8);
+							imme<="00000000" & instructions(7 downto 0);
+						when "00100"=>                       -------LW
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+							imme<="00000000000" & instructions(4 downto 0);
+						when "00101"=>                       -------SW
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+							imme<="00000000000" & instructions(4 downto 0);
+						when "00110"=>                       -------MV
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "00111"=>                       -------SLTU
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "01000"=>                       -------B
+							imme<="00000" & instructions(10 downto 0);
+						when "01001"=>                       -------AND
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "01010"=>                       -------OR
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "01011"=>                       -------NOT
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "01100"=>                       -------SLLV
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "01101"=>                       -------SRAV
+							rx<=instructions(10 downto 8);
+							ry<=instructions(7 downto 5);
+						when "01110"=>                       -------BEQZ
+							rx<=instructions(10 downto 8);
+							imme<="00000000" & instructions(7 downto 0);
+						when others=>
+							NULL;
+													          -------译码					IRWrite<='0';
 					MemRead<='0';
 					PCWrite<='0';
 					ALUSrcA<='0';
