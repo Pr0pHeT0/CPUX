@@ -28,61 +28,60 @@ entity Controler is
 		clk:in STD_LOGIC;
 		clk0:in STD_LOGIC;
 		instructions:in STD_LOGIC_VECTOR(15 downto 0);
-		light:out STD_LOGIC_VECTOR(15 downto 0);
+		--light:out STD_LOGIC_VECTOR(15 downto 0);
 		showCtrl:in STD_LOGIC;
-		bZero_ctrl:in  STD_LOGIC;  
-		signal state : controler_state;
-		signal PCWrite:std_logic;
-		signal PCWriteCond:std_logic;
-		signal PCSource:std_logic;
-		signal ALUop:std_logic_vector(2 downto 0);
-		signal ALUSrcA:std_logic;
-		signal ALUSrcB:std_logic_vector(1 downto 0);
-		signal MemRead:std_logic;
-		signal MemWrite:std_logic;
-		signal IRWrite:std_logic;
-		signal MemtoReg:std_logic_vector(1 downto 0);
-		signal RegWrite:std_logic_vector(2 downto 0);
-		signal RegDst:std_logic_vector(1 downto 0);
-		signal IorD:std_logic;
-		signal rx:std_logic_vector(2 downto 0);
-		signal ry:std_logic_vector(2 downto 0);
-		signal rz:std_logic_vector(2 downto 0);
-		signal imme:std_logic_vector(15 downto 0);
-		signal tmpb_zero:std_logic;
-		signal tmp_light:std_logic_vector(15 downto 0)
+		bZero_ctrl:in STD_LOGIC;  
+		PCWrite:out std_logic;
+		-- PCWriteCond:std_logic;
+		PCSource:out std_logic;
+		ALUop:out std_logic_vector(2 downto 0);
+		ALUSrcA:out std_logic;
+		ALUSrcB:out std_logic_vector(1 downto 0);
+		MemRead:out std_logic;
+		MemWrite:out std_logic;
+		IRWrite:out std_logic;
+		MemtoReg:out std_logic_vector(1 downto 0);
+		RegWrite:out std_logic_vector(2 downto 0);
+		RegDst:out std_logic_vector(1 downto 0);
+		IorD:out std_logic;
+		rx:out std_logic_vector(2 downto 0);
+		ry:out std_logic_vector(2 downto 0);
+		rz:out std_logic_vector(2 downto 0);
+		imme:out std_logic_vector(15 downto 0);
+		--tmpb_zero:out std_logic;
+		--tmp_light:out std_logic_vector(15 downto 0)
 		);
 end Controler;
 
 architecture Behavioral of Controler is
 
-signal bzero:std_logic;
-type shower_state is(PC,ALU,Mem,Reg);
-signal shower : shower_state ;
-type controler_state is(instruction_fetch,decode,execute,mem_control,write_reg);
-signal state : controler_state;
-signal PCWrite:std_logic;
-signal PCWriteCond:std_logic;
-signal PCSource:std_logic;
-signal ALUop:std_logic_vector(2 downto 0);
-signal ALUSrcA:std_logic;
-signal ALUSrcB:std_logic_vector(1 downto 0);
-signal MemRead:std_logic;
-signal MemWrite:std_logic;
-signal IRWrite:std_logic;
-signal MemtoReg:std_logic_vector(1 downto 0);
-signal RegWrite:std_logic_vector(2 downto 0);
-signal RegDst:std_logic_vector(1 downto 0);
-signal IorD:std_logic;
+	signal bzero:std_logic;
+	type shower_state is(PC,ALU,Mem,Reg);
+	signal shower : shower_state ;
+	type controler_state is(instruction_fetch,decode,execute,mem_control,write_reg);
+	signal state : controler_state;
+	--signal PCWrite:std_logic;
+	--signal PCWriteCond:std_logic;
+	--signal PCSource:std_logic;
+	--signal ALUop:std_logic_vector(2 downto 0);
+	--signal ALUSrcA:std_logic;
+	--signal ALUSrcB:std_logic_vector(1 downto 0);
+	--signal MemRead:std_logic;
+	--signal MemWrite:std_logic;
+	--signal IRWrite:std_logic;
+	--signal MemtoReg:std_logic_vector(1 downto 0);
+	--signal RegWrite:std_logic_vector(2 downto 0);
+	--signal RegDst:std_logic_vector(1 downto 0);
+	--signal IorD:std_logic;
 
-signal rx:std_logic_vector(2 downto 0);
-signal ry:std_logic_vector(2 downto 0);
-signal rz:std_logic_vector(2 downto 0);
+	--signal rx:std_logic_vector(2 downto 0);
+	--signal ry:std_logic_vector(2 downto 0);
+	--signal rz:std_logic_vector(2 downto 0);
 
-signal imme:std_logic_vector(15 downto 0);
+	--signal imme:std_logic_vector(15 downto 0);
 
-signal tmpb_zero:std_logic;
-signal tmp_light:std_logic_vector(15 downto 0);
+	signal tmpb_zero:std_logic;
+	signal tmp_light:std_logic_vector(15 downto 0);
 begin
 	light<=tmp_light;
 	process(clk,rst,showCtrl)
@@ -308,7 +307,8 @@ begin
 							ALUOp<="111"; 
 							state<=write_reg;
 						when "01110"=>                       -------BEQZ
-							ALUSrcA<='1';
+							ALUSrcA<='0';
+							ALUSrcB<='11';
 							ALUOp<="000"; 
 							state<=instruction_fetch;
 						when others=>
