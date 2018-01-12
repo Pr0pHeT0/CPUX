@@ -138,7 +138,7 @@ component REG
         clk: in std_logic;
         reg_num_1: in std_logic_vector(3 downto 0);
         reg_num_2: in std_logic_vector(3 downto 0);
-        -- reg_write_num: in std_logic_vector(3 downto 0) := "0000";
+        reg_write_num: in std_logic_vector(3 downto 0) := "0000";
         reg_write_data: in std_logic_vector(15 downto 0);
         write_oe: in std_logic := '0';
         reg_data_1: out std_logic_vector(15 downto 0);
@@ -205,6 +205,8 @@ component muxregdst
         outsrc_r: out std_logic_vector(15 downto 0)
     );
 end component;
+
+signal signal_outsrc_r : std_logic_vector(15 downto 0);
 
 component mux_IorD
     Port 
@@ -339,11 +341,19 @@ module_IR : IR  port map(
     IR_out=>signal_IR_out
 );
 
+module_muxregdst : muxregdst  port map(
+    rx=>rxl,
+    ry=>ryl,
+    rz=>rzl,
+    mux_op_r=>mux_op_rl,
+    outsrc_r=>outsrc_rl
+);
+
 module_REG : REG  port map(
     clk=>clk,
     reg_num_1=>signal_rx,
     reg_num_2=>signal_ry,
-    --reg_write_num=>reg_write_numl,
+    reg_write_num=>signal_outsrc_r,
     reg_write_data=>reg_write_datal,
     write_oe=>write_oel,
     reg_data_1=>reg_data_1l,
@@ -367,6 +377,7 @@ module_CONTROLER : CONTROLER port map(
     showCtrl => showCtrll,
     bZero_ctrl => bZero_ctrll
 );
+
 module_muxalusrca : muxalusrca  port map(
     pc_out=>pc_outl,
     A=>Al,
@@ -397,13 +408,7 @@ module_muxpcsource : muxpcsource  port map(
     outsrc_p=>outsrc_pl
 );
 
-module_muxregdst : muxregdst  port map(
-    rx=>rxl,
-    ry=>ryl,
-    rz=>rzl,
-    mux_op_r=>mux_op_rl,
-    outsrc_r=>outsrc_rl
-);
+
 
 
 
