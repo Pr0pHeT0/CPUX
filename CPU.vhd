@@ -69,6 +69,10 @@ signal signal_IorD : std_logic;
 signal signal_IRWrite : std_logic;
 signal signal_MemRead : std_logic;
 signal signal_MemWrite : std_logic;
+signal signal_rx : std_logic_vector(2 downto 0);
+signal signal_ry : std_logic_vector(2 downto 0);
+signal signal_rz : std_logic_vector(2 downto 0);
+
 
 component PC
     Port 
@@ -134,7 +138,7 @@ component REG
         clk: in std_logic;
         reg_num_1: in std_logic_vector(3 downto 0);
         reg_num_2: in std_logic_vector(3 downto 0);
-        reg_write_num: in std_logic_vector(3 downto 0) := "0000";
+        -- reg_write_num: in std_logic_vector(3 downto 0) := "0000";
         reg_write_data: in std_logic_vector(15 downto 0);
         write_oe: in std_logic := '0';
         reg_data_1: out std_logic_vector(15 downto 0);
@@ -335,6 +339,17 @@ module_IR : IR  port map(
     IR_out=>signal_IR_out
 );
 
+module_REG : REG  port map(
+    clk=>clk,
+    reg_num_1=>signal_rx,
+    reg_num_2=>signal_ry,
+    --reg_write_num=>reg_write_numl,
+    reg_write_data=>reg_write_datal,
+    write_oe=>write_oel,
+    reg_data_1=>reg_data_1l,
+    reg_data_2=>reg_data_2l
+);
+
 module_ALU : ALU port map(
     clk => clkl,
     alu_srcA => alu_srcAl,
@@ -390,16 +405,6 @@ module_muxregdst : muxregdst  port map(
     outsrc_r=>outsrc_rl
 );
 
-module_REG : REG  port map(
-    clk=>clkl,
-    reg_num_1=>reg_num_1l,
-    reg_num_2=>reg_num_2l,
-    reg_write_num=>reg_write_numl,
-    reg_write_data=>reg_write_datal,
-    write_oe=>write_oel,
-    reg_data_1=>reg_data_1l,
-    reg_data_2=>reg_data_2l
-);
 
 
 module_DR : DR  port map(
