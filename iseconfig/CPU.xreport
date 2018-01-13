@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-01-11T15:09:36</DateModified>
+  <DateModified>2018-01-12T19:43:41</DateModified>
   <ModuleName>CPU</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/qsz/CPUX/iseconfig/CPU.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/qsz/CPUX</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/qsz/CPUX/</ImplementationReportsDirectory>
   <DateInitialized>2018-01-11T15:09:36</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

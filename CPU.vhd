@@ -6,13 +6,13 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity CPU is 
     port
     (
-        rst : STD_LOGIC;
-        clk : STD_LOGIC;
-        ram_oe : STD_LOGIC;
-        ram_rw : STD_LOGIC;
-        ram_en : STD_LOGIC;        
-        ram_data : STD_LOGIC_VECTOR(15 downto 0);
-        ram_addr : STD_LOGIC_VECTOR(17 downto 0)
+        rst : in STD_LOGIC;
+        clk : in STD_LOGIC;
+        ram_oe : in STD_LOGIC;
+        ram_rw : in STD_LOGIC;
+        ram_en : in STD_LOGIC;        
+        ram_data : inout STD_LOGIC_VECTOR(15 downto 0);
+        ram_addr : in STD_LOGIC_VECTOR(17 downto 0)
         --sw : STD_LOGIC_VECTOR(15 downto 0);
         --led : STD_LOGIC_VECTOR(15 downto 0);     
     );
@@ -113,7 +113,7 @@ component mem
 		mem_write_data: in std_logic_vector(15 downto 0);
 		mem_read_data: out std_logic_vector(15 downto 0);
 		mem_addr_rw: in std_logic_vector(15 downto 0);
-		IR_Write : in std_logic;		
+		--IR_Write : in std_logic;		
 		mem_read : in std_logic;
 		mem_write : in std_logic
     );
@@ -249,7 +249,7 @@ component mux_IorD
 end component;
 
 signal signal_aluout: std_logic_vector(15 downto 0);
-signal outsrc_i: std_logic_vector(15 downto 0);
+signal signal_outsrc_i: std_logic_vector(15 downto 0);
     
 
 begin

@@ -45,7 +45,7 @@ entity REG is
             end if;
         end process;
     
-        process(reg_num_1, r0, r1, r2, r3, r4, r5, r6, r7, T, SP, IH, RA)
+        process(reg_num_1, r0, r1, r2, r3, r4, r5, r6,T)
         begin
             case reg_num_1 is
                 when "000" => reg_data_1 <= r0;
@@ -60,7 +60,7 @@ entity REG is
             end case;
         end process;
     
-        process(reg_num_2, r0, r1, r2, r3, r4, r5, r6, r7, T, SP, IH, RA)
+        process(reg_num_2, r0, r1, r2, r3, r4, r5, r6, T)
         begin
             case reg_num_2 is
                 when "000" => reg_data_2 <= r0;

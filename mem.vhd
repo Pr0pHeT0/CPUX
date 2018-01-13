@@ -16,13 +16,11 @@ entity mem is
 		mem_write_data: in std_logic_vector(15 downto 0);
 		mem_read_data: out std_logic_vector(15 downto 0);
 		mem_addr_rw: in std_logic_vector(15 downto 0);
-		IR_Write : in std_logic;		
+		--IR_Write : in std_logic;		
 		mem_read : in std_logic;
 		mem_write : in std_logic
 	);
 end mem;
-
-signal signal_mem_read_data : std_logic_vector(15 downto 0);
 
 architecture Behavioral of mem is
 	signal status:std_logic_vector(2 downto 0):="000";

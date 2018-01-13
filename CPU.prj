@@ -1,3 +1,4 @@
+vhdl work "RR.vhd"
 vhdl work "REG.vhd"
 vhdl work "PC.vhd"
 vhdl work "MUX_IorD.vhd"

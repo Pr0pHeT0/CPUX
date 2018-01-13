@@ -47,7 +47,7 @@ entity Controler is
 		rx:out std_logic_vector(2 downto 0);
 		ry:out std_logic_vector(2 downto 0);
 		rz:out std_logic_vector(2 downto 0);
-		imme:out std_logic_vector(15 downto 0);
+		imme:out std_logic_vector(15 downto 0)
 		--tmpb_zero:out std_logic;
 		--tmp_light:out std_logic_vector(15 downto 0)
 		);
@@ -81,57 +81,57 @@ architecture Behavioral of Controler is
 	--signal imme:std_logic_vector(15 downto 0);
 
 	--signal tmpb_zero:std_logic;
-	signal tmp_light:std_logic_vector(15 downto 0);
+--	signal tmp_light:std_logic_vector(15 downto 0);
 begin
-	light<=tmp_light;
-	process(clk,rst,showCtrl)
-	begin
-		if rst='0' then
-			shower<=PC;
-		elsif rising_edge(showCtrl) then
-			case shower is
-				when PC=>
-					shower<=ALU;
-				when ALU=>
-					shower<=Mem;
-				when Mem=>
-					shower<=Reg;
-				when Reg=>
-					shower<=PC;
-			end case;
-		end if;
-	end process;
+--	light<=tmp_light;
+--	process(clk,rst,showCtrl)
+--	begin
+--		if rst='0' then
+--			shower<=PC;
+--		elsif rising_edge(showCtrl) then
+--			case shower is
+--				when PC=>
+--					shower<=ALU;
+--				when ALU=>
+--					shower<=Mem;
+--				when Mem=>
+--					shower<=Reg;
+--				when Reg=>
+--					shower<=PC;
+--			end case;
+--		end if;
+--	end process;
 	
-	process(clk0,rst,state)
-	begin
-		if rst='0' then
-			tmp_light<=x"0000";
-		elsif rising_edge(clk0)then
-			case shower is
-				when PC=>
-					tmp_light(15 downto 0)<=x"0000";
-					tmp_light(15)<=PCWrite;
-					tmp_light(11)<=PCSource;
-					tmp_light(7)<=PCWriteCond;
-				when ALU=>
-					tmp_light(15 downto 0)<=x"0000";
-					tmp_light(15 downto 13)<=ALUOp;
-					tmp_light(11)<=ALUSrcA;
-					tmp_light(7 downto 6)<=ALUSrcB;
-				when Mem=>
-					tmp_light(15 downto 0)<=x"0000";
-					tmp_light(15)<=MemRead;
-					tmp_light(11)<=MemWrite;
-					tmp_light(7)<=IRWrite;
-					tmp_light(3 downto 2)<=MemtoReg;
-				when Reg=>
-					tmp_light(15 downto 0)<=x"0000";
-					tmp_light(15 downto 13)<=RegWrite;
-					tmp_light(11 downto 10)<=RegDst;
-					tmp_light(7)<=IorD;
-			end case;
-		end if;
-	end process;
+--	process(clk0,rst,state)
+--	begin
+--		if rst='0' then
+--			tmp_light<=x"0000";
+--		elsif rising_edge(clk0)then
+--			case shower is
+--				when PC=>
+--					tmp_light(15 downto 0)<=x"0000";
+--					tmp_light(15)<=PCWrite;
+--					tmp_light(11)<=PCSource;
+--					tmp_light(7)<=PCWriteCond;
+--				when ALU=>
+--					tmp_light(15 downto 0)<=x"0000";
+--					tmp_light(15 downto 13)<=ALUOp;
+--					tmp_light(11)<=ALUSrcA;
+--					tmp_light(7 downto 6)<=ALUSrcB;
+--				when Mem=>
+--					tmp_light(15 downto 0)<=x"0000";
+--					tmp_light(15)<=MemRead;
+--					tmp_light(11)<=MemWrite;
+--					tmp_light(7)<=IRWrite;
+--					tmp_light(3 downto 2)<=MemtoReg;
+--				when Reg=>
+--					tmp_light(15 downto 0)<=x"0000";
+--					tmp_light(15 downto 13)<=RegWrite;
+--					tmp_light(11 downto 10)<=RegDst;
+--					tmp_light(7)<=IorD;
+--			end case;
+--		end if;
+--	end process;
 	
 	-- process(rst,bZero_Ctrl)
 	-- begin
@@ -173,7 +173,7 @@ begin
 			PCSource<='0';
 			RegDst<="00";
 			RegWrite<="000";
-		elsif rising_edge(clk)then                        -------五个周期
+		elsif rising_edge(clk) then                        -------五个周期
 			case state is
 				when instruction_fetch=>                  -------取指
 					MemRead<='1';
@@ -235,7 +235,7 @@ begin
 							imme<="00000000" & instructions(7 downto 0);
 						when others=>
 							NULL;
-															
+					end case;										
 					IRWrite<='0';
 					MemRead<='0';
 					PCWrite<='0';
@@ -309,7 +309,7 @@ begin
 							state<=write_reg;
 						when "01110"=>                       -------BEQZ
 							ALUSrcA<='0';
-							ALUSrcB<='11';
+							ALUSrcB<="11";
 							ALUOp<="000"; 
 							state<=instruction_fetch;
 						when others=>
