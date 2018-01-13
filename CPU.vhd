@@ -170,7 +170,7 @@ component REG
         reg_num_2: in std_logic_vector(3 downto 0);
         reg_write_num: in std_logic_vector(3 downto 0) := "0000";
         reg_write_data: in std_logic_vector(15 downto 0);
-        write_oe: in std_logic := '0';
+        write_oe: in std_logic_vector(2 downto 0) := '000';
         reg_data_1: out std_logic_vector(15 downto 0);
         reg_data_2: out std_logic_vector(15 downto 0)
     );
