@@ -8,11 +8,11 @@ entity CPU is
     (
         rst : in STD_LOGIC;
         clk : in STD_LOGIC;
-        ram_oe : in STD_LOGIC;
-        ram_rw : in STD_LOGIC;
-        ram_en : in STD_LOGIC;        
+        ram_oe : out STD_LOGIC;
+        ram_rw : out STD_LOGIC;
+        ram_en : out STD_LOGIC;        
         ram_data : inout STD_LOGIC_VECTOR(15 downto 0);
-        ram_addr : in STD_LOGIC_VECTOR(17 downto 0)
+        ram_addr : out STD_LOGIC_VECTOR(17 downto 0)
         --sw : STD_LOGIC_VECTOR(15 downto 0);
         --led : STD_LOGIC_VECTOR(15 downto 0);     
     );
@@ -119,6 +119,11 @@ component mem
     );
 end component;
 
+-- signal signal_mem_en : STD_LOGIC;
+-- signal signal_mem_oe : STD_LOGIC;
+-- signal signal_mem_rw : STD_LOGIC;
+-- signal signal_mem_addr : STD_LOGIC_VECTOR (17 downto 0);
+-- signal signal_mem_data : STD_LOGIC_VECTOR (15 downto 0);
 signal signal_mem_read_data : std_logic_vector(15 downto 0);
 
 component IR
