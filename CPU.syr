@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: CPU.prj
@@ -137,21 +137,605 @@ Compiling vhdl file "/home/qsz/CPUX/DR.vhd" in Library work.
 Architecture behavioral of Entity dr is up to date.
 Compiling vhdl file "/home/qsz/CPUX/CPU.vhd" in Library work.
 Entity <cpu> compiled.
-ERROR:HDLParsers:1411 - "/home/qsz/CPUX/CPU.vhd" Line 273. Parameter ram_en of mode in can not be associated with a formal port of mode out.
-ERROR:HDLParsers:1411 - "/home/qsz/CPUX/CPU.vhd" Line 274. Parameter ram_oe of mode in can not be associated with a formal port of mode out.
-ERROR:HDLParsers:1411 - "/home/qsz/CPUX/CPU.vhd" Line 275. Parameter ram_rw of mode in can not be associated with a formal port of mode out.
-ERROR:HDLParsers:1411 - "/home/qsz/CPUX/CPU.vhd" Line 276. Parameter ram_addr of mode in can not be associated with a formal port of mode out.
-ERROR:HDLParsers:837 - "/home/qsz/CPUX/CPU.vhd" Line 294. Width mismatch. Expected width 16, Actual width is 3 for dimension 1 of signal_rx.
-ERROR:HDLParsers:837 - "/home/qsz/CPUX/CPU.vhd" Line 295. Width mismatch. Expected width 16, Actual width is 3 for dimension 1 of signal_ry.
-ERROR:HDLParsers:837 - "/home/qsz/CPUX/CPU.vhd" Line 296. Width mismatch. Expected width 16, Actual width is 3 for dimension 1 of signal_rz.
-ERROR:HDLParsers:800 - "/home/qsz/CPUX/CPU.vhd" Line 307. Type of write_oe is incompatible with type of signal_RegWrite.
-ERROR:HDLParsers:850 - "/home/qsz/CPUX/CPU.vhd" Line 313. Formal port pc_out does not exist in Component 'muxalusrca'.
+Entity <cpu> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <CPU> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <PC> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <mux_IorD> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <mem> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <IR> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <muxregdst> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <REG> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <muxalusrca> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <muxalusrcb> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <ALU> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <CONTROLER> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <RR> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <muxpcsource> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <muxmemtoreg> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <DR> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <CPU> in library <work> (Architecture <behavioral>).
+WARNING:Xst:752 - "/home/qsz/CPUX/CPU.vhd" line 340: Unconnected input port 'clk0' of component 'CONTROLER' is tied to default value.
+WARNING:Xst:752 - "/home/qsz/CPUX/CPU.vhd" line 340: Unconnected input port 'showCtrl' of component 'CONTROLER' is tied to default value.
+WARNING:Xst:752 - "/home/qsz/CPUX/CPU.vhd" line 340: Unconnected input port 'bZero_ctrl' of component 'CONTROLER' is tied to default value.
+Entity <CPU> analyzed. Unit <CPU> generated.
+
+Analyzing Entity <PC> in library <work> (Architecture <behavioral>).
+Entity <PC> analyzed. Unit <PC> generated.
+
+Analyzing Entity <mux_IorD> in library <work> (Architecture <behavioral>).
+Entity <mux_IorD> analyzed. Unit <mux_IorD> generated.
+
+Analyzing Entity <mem> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "/home/qsz/CPUX/mem.vhd" line 38: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <clk>
+WARNING:Xst:819 - "/home/qsz/CPUX/mem.vhd" line 30: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <mem_addr_rw>
+INFO:Xst:2679 - Register <mem_en> in unit <mem> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Entity <mem> analyzed. Unit <mem> generated.
+
+Analyzing Entity <IR> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "/home/qsz/CPUX/IR.vhd" line 16: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <IR_write>, <IR_in>
+Entity <IR> analyzed. Unit <IR> generated.
+
+Analyzing Entity <muxregdst> in library <work> (Architecture <behavioral>).
+Entity <muxregdst> analyzed. Unit <muxregdst> generated.
+
+Analyzing Entity <REG> in library <work> (Architecture <behavioral>).
+Entity <REG> analyzed. Unit <REG> generated.
+
+Analyzing Entity <muxalusrca> in library <work> (Architecture <behavioral>).
+Entity <muxalusrca> analyzed. Unit <muxalusrca> generated.
+
+Analyzing Entity <muxalusrcb> in library <work> (Architecture <behavioral>).
+INFO:Xst:1561 - "/home/qsz/CPUX/muxalusrcb.vhd" line 28: Mux is complete : default of case is discarded
+Entity <muxalusrcb> analyzed. Unit <muxalusrcb> generated.
+
+Analyzing Entity <ALU> in library <work> (Architecture <behavioral>).
+Entity <ALU> analyzed. Unit <ALU> generated.
+
+Analyzing Entity <CONTROLER> in library <work> (Architecture <behavioral>).
+INFO:Xst:2679 - Register <PCSource> in unit <CONTROLER> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Entity <CONTROLER> analyzed. Unit <CONTROLER> generated.
+
+Analyzing Entity <RR> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "/home/qsz/CPUX/RR.vhd" line 15: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <RR_in>
+Entity <RR> analyzed. Unit <RR> generated.
+
+Analyzing Entity <muxpcsource> in library <work> (Architecture <behavioral>).
+Entity <muxpcsource> analyzed. Unit <muxpcsource> generated.
+
+Analyzing Entity <muxmemtoreg> in library <work> (Architecture <behavioral>).
+Entity <muxmemtoreg> analyzed. Unit <muxmemtoreg> generated.
+
+Analyzing Entity <DR> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "/home/qsz/CPUX/DR.vhd" line 15: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <DR_in>
+Entity <DR> analyzed. Unit <DR> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <PC>.
+    Related source file is "/home/qsz/CPUX/PC.vhd".
+    Found 16-bit register for signal <pc_out>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <PC> synthesized.
+
+
+Synthesizing Unit <mux_IorD>.
+    Related source file is "/home/qsz/CPUX/MUX_IorD.vhd".
+Unit <mux_IorD> synthesized.
+
+
+Synthesizing Unit <mem>.
+    Related source file is "/home/qsz/CPUX/mem.vhd".
+    Found 16-bit register for signal <mem_read_data>.
+    Found 16-bit tristate buffer for signal <mem_data>.
+    Found 18-bit register for signal <mem_addr>.
+    Found 1-bit register for signal <mem_oe>.
+    Found 1-bit register for signal <mem_rw>.
+    Found 16-bit register for signal <Mtridata_mem_data> created at line 42.
+    Found 1-bit register for signal <Mtrien_mem_data> created at line 42.
+    Found 3-bit register for signal <status>.
+    Found 3-bit adder for signal <status$share0000>.
+    Summary:
+	inferred  56 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  16 Tristate(s).
+Unit <mem> synthesized.
+
+
+Synthesizing Unit <IR>.
+    Related source file is "/home/qsz/CPUX/IR.vhd".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:737 - Found 16-bit latch for signal <IR_out>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+Unit <IR> synthesized.
+
+
+Synthesizing Unit <muxregdst>.
+    Related source file is "/home/qsz/CPUX/muxregdst.vhd".
+    Found 3-bit tristate buffer for signal <outsrc_r>.
+    Summary:
+	inferred   3 Tristate(s).
+Unit <muxregdst> synthesized.
+
+
+Synthesizing Unit <REG>.
+    Related source file is "/home/qsz/CPUX/REG.vhd".
+    Found 16-bit 8-to-1 multiplexer for signal <reg_data_1>.
+    Found 16-bit 8-to-1 multiplexer for signal <reg_data_2>.
+    Found 16-bit register for signal <r0>.
+    Found 16-bit register for signal <r1>.
+    Found 16-bit register for signal <r2>.
+    Found 16-bit register for signal <r3>.
+    Found 16-bit register for signal <r4>.
+    Found 16-bit register for signal <r5>.
+    Found 16-bit register for signal <r6>.
+    Found 16-bit register for signal <T>.
+    Summary:
+	inferred 128 D-type flip-flop(s).
+	inferred  32 Multiplexer(s).
+Unit <REG> synthesized.
+
+
+Synthesizing Unit <muxalusrca>.
+    Related source file is "/home/qsz/CPUX/muxalusrca.vhd".
+Unit <muxalusrca> synthesized.
+
+
+Synthesizing Unit <muxalusrcb>.
+    Related source file is "/home/qsz/CPUX/muxalusrcb.vhd".
+WARNING:Xst:653 - Signal <con1> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000001.
+WARNING:Xst:653 - Signal <con0> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000000.
+    Found 16-bit 4-to-1 multiplexer for signal <outsrc_b>.
+    Summary:
+	inferred  16 Multiplexer(s).
+Unit <muxalusrcb> synthesized.
+
+
+Synthesizing Unit <ALU>.
+    Related source file is "/home/qsz/CPUX/ALU.vhd".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 16-bit 8-to-1 multiplexer for signal <alu_out>.
+    Found 16-bit addsub for signal <alu_out$addsub0000>.
+    Found 16-bit comparator less for signal <alu_out$cmp_lt0000> created at line 30.
+    Found 16-bit shifter logical left for signal <alu_out$shift0002> created at line 38.
+    Found 16-bit shifter logical right for signal <alu_out$shift0003> created at line 40.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+	inferred  16 Multiplexer(s).
+	inferred   2 Combinational logic shifter(s).
+Unit <ALU> synthesized.
+
+
+Synthesizing Unit <CONTROLER>.
+    Related source file is "/home/qsz/CPUX/CONTROLER.vhd".
+WARNING:Xst:647 - Input <clk0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <showCtrl> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1305 - Output <rz> is never assigned. Tied to value 000.
+WARNING:Xst:647 - Input <bZero_ctrl> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <shower> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 21                                             |
+    | Inputs             | 14                                             |
+    | Outputs            | 5                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | instruction_fetch                              |
+    | Power Up State     | instruction_fetch                              |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 3-bit register for signal <ALUop>.
+    Found 1-bit register for signal <PCWrite>.
+    Found 1-bit register for signal <MemRead>.
+    Found 1-bit register for signal <IRWrite>.
+    Found 2-bit register for signal <RegDst>.
+    Found 3-bit register for signal <rx>.
+    Found 1-bit register for signal <ALUSrcA>.
+    Found 3-bit register for signal <ry>.
+    Found 2-bit register for signal <ALUSrcB>.
+    Found 3-bit register for signal <RegWrite>.
+    Found 16-bit register for signal <imme>.
+    Found 1-bit register for signal <MemWrite>.
+    Found 2-bit register for signal <MemtoReg>.
+    Found 1-bit register for signal <IorD>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  40 D-type flip-flop(s).
+Unit <CONTROLER> synthesized.
+
+
+Synthesizing Unit <RR>.
+    Related source file is "/home/qsz/CPUX/RR.vhd".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+Unit <RR> synthesized.
+
+
+Synthesizing Unit <muxpcsource>.
+    Related source file is "/home/qsz/CPUX/muxpcsource.vhd".
+Unit <muxpcsource> synthesized.
+
+
+Synthesizing Unit <muxmemtoreg>.
+    Related source file is "/home/qsz/CPUX/muxmemtoreg.vhd".
+    Found 16-bit tristate buffer for signal <outsrc_m>.
+    Summary:
+	inferred  16 Tristate(s).
+Unit <muxmemtoreg> synthesized.
+
+
+Synthesizing Unit <DR>.
+    Related source file is "/home/qsz/CPUX/DR.vhd".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+Unit <DR> synthesized.
+
+
+Synthesizing Unit <CPU>.
+    Related source file is "/home/qsz/CPUX/CPU.vhd".
+WARNING:Xst:1780 - Signal <signal_aluout> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+Unit <CPU> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 16-bit addsub                                         : 1
+ 3-bit adder                                           : 1
+# Registers                                            : 30
+ 1-bit register                                        : 9
+ 16-bit register                                       : 12
+ 18-bit register                                       : 1
+ 2-bit register                                        : 3
+ 3-bit register                                        : 5
+# Latches                                              : 1
+ 16-bit latch                                          : 1
+# Comparators                                          : 1
+ 16-bit comparator less                                : 1
+# Multiplexers                                         : 4
+ 16-bit 4-to-1 multiplexer                             : 1
+ 16-bit 8-to-1 multiplexer                             : 3
+# Logic shifters                                       : 2
+ 16-bit shifter logical left                           : 1
+ 16-bit shifter logical right                          : 1
+# Tristates                                            : 3
+ 16-bit tristate buffer                                : 2
+ 3-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <module_CONTROLER/state/FSM> on signal <state[1:3]> with sequential encoding.
+-------------------------------
+ State             | Encoding
+-------------------------------
+ instruction_fetch | 000
+ decode            | 001
+ execute           | 010
+ mem_control       | 100
+ write_reg         | 011
+-------------------------------
+INFO:Xst:2261 - The FF/Latch <mem_addr_16> in Unit <module_mem> is equivalent to the following FF/Latch, which will be removed : <mem_addr_17> 
+WARNING:Xst:1710 - FF/Latch <mem_addr_16> (without init value) has a constant value of 0 in block <module_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <MemtoReg_1> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <RegWrite_2> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <imme_11> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <imme_12> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <imme_13> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <imme_14> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <imme_15> (without init value) has a constant value of 0 in block <module_CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2404 -  FFs/Latches <mem_addr<17:16>> (without init value) have a constant value of 0 in block <mem>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Adders/Subtractors                                   : 2
+ 16-bit addsub                                         : 1
+ 3-bit adder                                           : 1
+# Registers                                            : 238
+ Flip-Flops                                            : 238
+# Latches                                              : 1
+ 16-bit latch                                          : 1
+# Comparators                                          : 1
+ 16-bit comparator less                                : 1
+# Multiplexers                                         : 34
+ 1-bit 8-to-1 multiplexer                              : 32
+ 16-bit 4-to-1 multiplexer                             : 1
+ 16-bit 8-to-1 multiplexer                             : 1
+# Logic shifters                                       : 2
+ 16-bit shifter logical left                           : 1
+ 16-bit shifter logical right                          : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <RegWrite_2> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <imme_11> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <imme_12> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <imme_13> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <imme_14> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <imme_15> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <MemtoReg_1> (without init value) has a constant value of 0 in block <CONTROLER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2042 - Unit muxmemtoreg: 16 internal tristates are replaced by logic (pull-up yes): outsrc_m<0>, outsrc_m<10>, outsrc_m<11>, outsrc_m<12>, outsrc_m<13>, outsrc_m<14>, outsrc_m<15>, outsrc_m<1>, outsrc_m<2>, outsrc_m<3>, outsrc_m<4>, outsrc_m<5>, outsrc_m<6>, outsrc_m<7>, outsrc_m<8>, outsrc_m<9>.
+WARNING:Xst:2042 - Unit muxregdst: 3 internal tristates are replaced by logic (pull-up yes): outsrc_r<0>, outsrc_r<1>, outsrc_r<2>.
+
+Optimizing unit <CPU> ...
+
+Optimizing unit <PC> ...
+
+Optimizing unit <muxregdst> ...
+
+Optimizing unit <REG> ...
+
+Optimizing unit <ALU> ...
+
+Optimizing unit <CONTROLER> ...
+
+Optimizing unit <muxmemtoreg> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block CPU, actual ratio is 3.
+FlipFlop module_CONTROLER/rx_0 has been replicated 4 time(s)
+FlipFlop module_CONTROLER/rx_1 has been replicated 2 time(s)
+FlipFlop module_CONTROLER/ry_0 has been replicated 3 time(s)
+FlipFlop module_CONTROLER/ry_1 has been replicated 3 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 246
+ Flip-Flops                                            : 246
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : CPU.ngr
+Top Level Output File Name         : CPU
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 39
+
+Cell Usage :
+# BELS                             : 844
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 16
+#      LUT2                        : 11
+#      LUT3                        : 313
+#      LUT3_D                      : 2
+#      LUT3_L                      : 1
+#      LUT4                        : 229
+#      LUT4_D                      : 5
+#      LUT4_L                      : 7
+#      MUXCY                       : 31
+#      MUXF5                       : 161
+#      MUXF6                       : 48
+#      VCC                         : 1
+#      XORCY                       : 16
+# FlipFlops/Latches                : 262
+#      FDC                         : 16
+#      FDCE                        : 3
+#      FDE                         : 99
+#      FDE_1                       : 128
+#      LD                          : 16
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 38
+#      IBUF                        : 1
+#      IOBUF                       : 16
+#      OBUF                        : 21
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s1200efg320-4 
+
+ Number of Slices:                      362  out of   8672     4%  
+ Number of Slice Flip Flops:            246  out of  17344     1%  
+ Number of 4 input LUTs:                586  out of  17344     3%  
+ Number of IOs:                          39
+ Number of bonded IOBs:                  39  out of    250    15%  
+    IOB Flip Flops:                      16
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+-------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)   | Load  |
+-----------------------------------+-------------------------+-------+
+module_CONTROLER/IRWrite           | NONE(module_IR/IR_out_0)| 16    |
+clk                                | BUFGP                   | 246   |
+-----------------------------------+-------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------------------------------+-------------------------------+-------+
+Control Signal                                             | Buffer(FF name)               | Load  |
+-----------------------------------------------------------+-------------------------------+-------+
+module_CONTROLER/rst_inv(module_CONTROLER/rst_inv1_INV_0:O)| NONE(module_CONTROLER/ALUSrcA)| 19    |
+-----------------------------------------------------------+-------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 25.686ns (Maximum Frequency: 38.932MHz)
+   Minimum input arrival time before clock: 4.220ns
+   Maximum output required time after clock: 4.897ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 25.686ns (frequency: 38.932MHz)
+  Total number of paths / destination ports: 280556 / 460
+-------------------------------------------------------------------------
+Delay:               12.843ns (Levels of Logic = 12)
+  Source:            module_CONTROLER/ry_0_2 (FF)
+  Destination:       module_REG/r6_9 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk falling
+
+  Data Path: module_CONTROLER/ry_0_2 to module_REG/r6_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             17   0.591   1.086  module_CONTROLER/ry_0_2 (module_CONTROLER/ry_0_2)
+     LUT3:I2->O            1   0.704   0.000  module_REG/mux21_4 (module_REG/mux21_4)
+     MUXF5:I1->O           1   0.321   0.000  module_REG/mux21_3_f5 (module_REG/mux21_3_f5)
+     MUXF6:I1->O           3   0.521   0.610  module_REG/mux21_2_f6 (signal_reg_data_2<14>)
+     LUT4:I1->O            1   0.704   0.424  module_ALU/alu_out_or000114_SW0 (N217)
+     LUT4:I3->O            3   0.704   0.706  module_ALU/alu_out_or000114 (module_ALU/alu_out_or000114)
+     LUT3_D:I0->O         17   0.704   1.226  module_ALU/alu_out_or000123_1 (module_ALU/alu_out_or000123)
+     LUT4:I0->O            1   0.704   0.000  module_ALU/alu_out_shift0001<6>_F (N358)
+     MUXF5:I0->O           1   0.321   0.424  module_ALU/alu_out_shift0001<6> (module_ALU/alu_out_shift0001<6>)
+     LUT4:I3->O            1   0.704   0.000  module_ALU/Mmux_alu_out_424 (module_ALU/Mmux_alu_out_412)
+     MUXF5:I1->O           1   0.321   0.000  module_ALU/Mmux_alu_out_3_f5_11 (module_ALU/Mmux_alu_out_3_f512)
+     MUXF6:I1->O           3   0.521   0.535  module_ALU/Mmux_alu_out_2_f6_11 (signal_alu_out<6>)
+     LUT4:I3->O            8   0.704   0.000  module_muxmemtoreg/outsrc_m<6>LogicTrst1 (signal_outsrc_m<6>)
+     FDE_1:D                   0.308          module_REG/r2_6
+    ----------------------------------------
+    Total                     12.843ns (7.832ns logic, 5.011ns route)
+                                       (61.0% logic, 39.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 45 / 45
+-------------------------------------------------------------------------
+Offset:              4.220ns (Levels of Logic = 2)
+  Source:            rst (PAD)
+  Destination:       module_CONTROLER/ry_2 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rst to module_CONTROLER/ry_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   1.218   0.482  rst_IBUF (rst_IBUF)
+     LUT3:I2->O           29   0.704   1.261  module_CONTROLER/imme_and00001 (module_CONTROLER/imme_and0000)
+     FDE:CE                    0.555          module_CONTROLER/imme_0
+    ----------------------------------------
+    Total                      4.220ns (2.477ns logic, 1.743ns route)
+                                       (58.7% logic, 41.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 50 / 34
+-------------------------------------------------------------------------
+Offset:              4.897ns (Levels of Logic = 1)
+  Source:            module_mem/Mtrien_mem_data (FF)
+  Destination:       ram_data<15> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: module_mem/Mtrien_mem_data to ram_data<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             16   0.591   1.034  module_mem/Mtrien_mem_data (module_mem/Mtrien_mem_data)
+     IOBUF:T->IO               3.272          ram_data_15_IOBUF (ram_data<15>)
+    ----------------------------------------
+    Total                      4.897ns (3.863ns logic, 1.034ns route)
+                                       (78.9% logic, 21.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.69 secs
+ 
 --> 
 
 
-Total memory usage is 504452 kilobytes
+Total memory usage is 544592 kilobytes
 
-Number of errors   :    9 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   39 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
 

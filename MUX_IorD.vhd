@@ -6,7 +6,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity mux_IorD is
     port(
-      pcout: in std_logic_vector(15 downto 0);
+      pc_out_i: in std_logic_vector(15 downto 0);
       aluout: in std_logic_vector(15 downto 0);
       mux_op_i: in std_logic;
       outsrc_i: out std_logic_vector(15 downto 0)
@@ -16,10 +16,10 @@ entity mux_IorD is
   architecture Behavioral of mux_IorD is
 
     begin
-        process(pcout, aluout, mux_op_i)
+        process(pc_out_i, aluout, mux_op_i)
         begin
         if (mux_op_i = '1') then
-            outsrc_i <= pcout;
+            outsrc_i <= pc_out_i;
         else
             outsrc_i <= aluout;
         end if;

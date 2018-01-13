@@ -166,11 +166,11 @@ component REG
     Port 
     (   
         clk: in std_logic;
-        reg_num_1: in std_logic_vector(3 downto 0);
-        reg_num_2: in std_logic_vector(3 downto 0);
-        reg_write_num: in std_logic_vector(3 downto 0) := "0000";
+        reg_num_1: in std_logic_vector(2 downto 0);
+        reg_num_2: in std_logic_vector(2 downto 0);
+        reg_write_num: in std_logic_vector(2 downto 0) := "000";
         reg_write_data: in std_logic_vector(15 downto 0);
-        write_oe: in std_logic_vector(2 downto 0) := '000';
+        reg_write: in std_logic_vector(2 downto 0) := "000";
         reg_data_1: out std_logic_vector(15 downto 0);
         reg_data_2: out std_logic_vector(15 downto 0)
     );
@@ -221,7 +221,7 @@ signal signal_outsrc_m : std_logic_vector(15 downto 0);
 component muxpcsource
     Port 
     (   
-        pc_out: in std_logic_vector(15 downto 0);
+        alu: in std_logic_vector(15 downto 0);
         aluout: in std_logic_vector(15 downto 0);
         mux_op_p: in std_logic;
         outsrc_p: out std_logic_vector(15 downto 0)
@@ -233,20 +233,20 @@ signal signal_outsrc_p: std_logic_vector(15 downto 0);
 component muxregdst
     Port 
     (   
-        rx: in std_logic_vector(15 downto 0);
-        ry: in std_logic_vector(15 downto 0);
-        rz: in std_logic_vector(15 downto 0);
+        rx: in std_logic_vector(2 downto 0);
+        ry: in std_logic_vector(2 downto 0);
+        rz: in std_logic_vector(2 downto 0);
         mux_op_r: in std_logic_vector(1 downto 0);
-        outsrc_r: out std_logic_vector(15 downto 0)
+        outsrc_r: out std_logic_vector(2 downto 0)
     );
 end component;
 
-signal signal_outsrc_r : std_logic_vector(15 downto 0);
+signal signal_outsrc_r : std_logic_vector(2 downto 0);
 
 component mux_IorD
     Port 
     (   
-			pc_out_a: in std_logic_vector(15 downto 0);
+			pc_out_i: in std_logic_vector(15 downto 0);
 			aluout: in std_logic_vector(15 downto 0);
 			mux_op_i: in std_logic;
 			outsrc_i: out std_logic_vector(15 downto 0)
@@ -267,7 +267,7 @@ module_PC : PC port map(
 );
 
 module_mux_IorD : mux_IorD  port map(
-    pc_out_a=>signal_pc_out,
+    pc_out_i=>signal_pc_out,
     aluout=>signal_RR_out,
     mux_op_i=>signal_IorD,
     outsrc_i=>signal_outsrc_i
@@ -309,13 +309,13 @@ module_REG : REG  port map(
     reg_num_2=>signal_ry,
     reg_write_num=>signal_outsrc_r,
     reg_write_data=>signal_outsrc_m,
-    write_oe=>signal_RegWrite,
+    reg_write=>signal_RegWrite,
     reg_data_1=>signal_reg_data_1,
     reg_data_2=>signal_reg_data_2
 );
 
 module_muxalusrca : muxalusrca  port map(
-    pc_out=>signal_pc_out,
+    pc_out_a=>signal_pc_out,
     A=>signal_reg_data_1,
     mux_op_a=>signal_ALUSrcA,
     outsrc_a=>signal_outsrc_a
@@ -367,7 +367,7 @@ module_RR : RR  port map(
 );
 
 module_muxpcsource : muxpcsource  port map(
-    pc_out=>signal_alu_out,
+    alu=>signal_alu_out,
     aluout=>signal_RR_out,
     mux_op_p=>signal_PCSource,
     outsrc_p=>signal_outsrc_p

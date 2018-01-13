@@ -352,6 +352,7 @@ begin
 							MemtoReg<="01";
 						when "00101"=>                       -------SW
 							IorD<='0';
+							MemWrite<='0';
 						when "00110"=>                       -------MV
 							RegDst<="01";
 							RegWrite<="001";

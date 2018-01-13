@@ -10,7 +10,7 @@ entity REG is
         reg_num_2: in std_logic_vector(2 downto 0);
         reg_write_num: in std_logic_vector(2 downto 0);  --:= "000";
         reg_write_data: in std_logic_vector(15 downto 0);
-        write_oe: in std_logic_vector(2 downto 0) := '000';
+        reg_write: in std_logic_vector(2 downto 0); --:= '000';
         reg_data_1: out std_logic_vector(15 downto 0);
         reg_data_2: out std_logic_vector(15 downto 0)
     );
@@ -26,10 +26,10 @@ entity REG is
         signal r6: std_logic_vector(15 downto 0) := "0000000000000000";
         signal T: std_logic_vector(15 downto 0) := "0000000000000000";
     begin
-    process(clk)
+    process(clk,reg_write)
         begin
             if(clk'event and clk = '0') then
-                if (write_oe /= '000') then
+                if (reg_write = "000") then
                     case reg_write_num is
                         when "000" => r0 <= reg_write_data;
                         when "001" => r1 <= reg_write_data;
@@ -38,6 +38,12 @@ entity REG is
                         when "100" => r4 <= reg_write_data;
                         when "101" => r5 <= reg_write_data;
                         when "110" => r6 <= reg_write_data;
+                        --when "111" => T <= reg_write_data;
+                        when others => null;
+                    end case;
+                end if;
+					 if (reg_write = "011") then
+                    case reg_write_num is                        
                         when "111" => T <= reg_write_data;
                         when others => null;
                     end case;
