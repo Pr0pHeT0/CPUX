@@ -29,8 +29,8 @@ entity Controler is
 		clk0:in STD_LOGIC;
 		instructions:in STD_LOGIC_VECTOR(15 downto 0);
 		--light:out STD_LOGIC_VECTOR(15 downto 0);
-		showCtrl:in STD_LOGIC;
-		bZero_ctrl:in STD_LOGIC;  
+		--showCtrl:in STD_LOGIC;
+		--bZero_ctrl:in STD_LOGIC;  
 		PCWrite:out std_logic;
 		-- PCWriteCond:std_logic;
 		PCSource:out std_logic;

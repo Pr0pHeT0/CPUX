@@ -1,8 +1,47 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Jan 13 22:49:51 2018
+// Written by: Map P.20131013 on Sun Jan 14 22:04:06 2018
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "clk" LOCATE = SITE "B9" LEVEL 1;
+COMP "rst" LOCATE = SITE "U10" LEVEL 1;
+COMP "ram_en" LOCATE = SITE "M15" LEVEL 1;
+COMP "ram_oe" LOCATE = SITE "M16" LEVEL 1;
+COMP "ram_rw" LOCATE = SITE "M18" LEVEL 1;
+COMP "ram_addr<10>" LOCATE = SITE "G13" LEVEL 1;
+COMP "ram_addr<11>" LOCATE = SITE "G14" LEVEL 1;
+COMP "ram_addr<12>" LOCATE = SITE "G15" LEVEL 1;
+COMP "ram_addr<13>" LOCATE = SITE "G16" LEVEL 1;
+COMP "ram_addr<14>" LOCATE = SITE "H14" LEVEL 1;
+COMP "ram_addr<15>" LOCATE = SITE "H15" LEVEL 1;
+COMP "ram_addr<16>" LOCATE = SITE "H16" LEVEL 1;
+COMP "ram_addr<17>" LOCATE = SITE "H17" LEVEL 1;
+COMP "ram_data<10>" LOCATE = SITE "L15" LEVEL 1;
+COMP "ram_data<11>" LOCATE = SITE "L16" LEVEL 1;
+COMP "ram_data<12>" LOCATE = SITE "L17" LEVEL 1;
+COMP "ram_data<13>" LOCATE = SITE "L18" LEVEL 1;
+COMP "ram_data<14>" LOCATE = SITE "M13" LEVEL 1;
+COMP "ram_data<15>" LOCATE = SITE "M14" LEVEL 1;
+COMP "ram_addr<0>" LOCATE = SITE "C17" LEVEL 1;
+COMP "ram_addr<1>" LOCATE = SITE "C18" LEVEL 1;
+COMP "ram_addr<2>" LOCATE = SITE "D16" LEVEL 1;
+COMP "ram_addr<3>" LOCATE = SITE "D17" LEVEL 1;
+COMP "ram_addr<4>" LOCATE = SITE "E15" LEVEL 1;
+COMP "ram_addr<5>" LOCATE = SITE "E16" LEVEL 1;
+COMP "ram_addr<6>" LOCATE = SITE "F14" LEVEL 1;
+COMP "ram_addr<7>" LOCATE = SITE "F15" LEVEL 1;
+COMP "ram_addr<8>" LOCATE = SITE "F17" LEVEL 1;
+COMP "ram_addr<9>" LOCATE = SITE "F18" LEVEL 1;
+COMP "ram_data<0>" LOCATE = SITE "J12" LEVEL 1;
+COMP "ram_data<1>" LOCATE = SITE "J13" LEVEL 1;
+COMP "ram_data<2>" LOCATE = SITE "J14" LEVEL 1;
+COMP "ram_data<3>" LOCATE = SITE "J15" LEVEL 1;
+COMP "ram_data<4>" LOCATE = SITE "J16" LEVEL 1;
+COMP "ram_data<5>" LOCATE = SITE "J17" LEVEL 1;
+COMP "ram_data<6>" LOCATE = SITE "K12" LEVEL 1;
+COMP "ram_data<7>" LOCATE = SITE "K13" LEVEL 1;
+COMP "ram_data<8>" LOCATE = SITE "K14" LEVEL 1;
+COMP "ram_data<9>" LOCATE = SITE "K15" LEVEL 1;
 NET "clk_BUFGP/IBUFG" BEL "clk_BUFGP/BUFG.GCLKMUX" USELOCALCONNECT;
 SCHEMATIC END;
 
